@@ -17,24 +17,21 @@
                 <div class="col-span-12">
                     <div class="box">
                         <div class="box-header">
-                            <h5 class="box-title">New category</h5>
+                            <h5 class="box-title">New Brand</h5>
                         </div>
                         <div class="box-body">
-                            <form action="{{ route('categoryDataInsert') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('brand.update', $BrandItem->id) }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="grid lg:grid-cols-2 gap-6 space-y-4 lg:space-y-0">
                                     <div class="space-y-2">
-                                        <label class="ti-form-label mb-0">category Name</label>
+                                        <label class="ti-form-label mb-0">Brand Name</label>
                                         <input type="text" class="my-auto ti-form-input" placeholder="category"
-                                            name="category" required>
+                                            name="brand" value="{{ $BrandItem->brand_name }}" required>
                                     </div>
-                                    <div class="space-y-2">
-                                        <label class="flex justify-between ti-form-label">
-                                            <span class="my-auto">category Images</span></label>
-                                        <input type="file" class="" name="categoryImg" required>
-                                    </div>
+
                                 </div>
-                                <button type="submit" class="ti-btn ti-btn-primary">Add New category</button>
+                                <button type="submit" class="ti-btn ti-btn-primary">Add New Brand</button>
                             </form>
                         </div>
                     </div>

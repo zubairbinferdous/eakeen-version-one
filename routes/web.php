@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\posController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,11 +56,32 @@ Route::get('/pending', [posController::class, 'pending'])->name('pending');
 
 
 // category-area
-Route::get('/categoryAdd', [CategoryController::class, 'category'])->name('category');
+Route::get('/category', [CategoryController::class, 'category'])->name('category');
+Route::post('/categoryAdd', [CategoryController::class, 'categoryDataInsert'])->name('categoryDataInsert');
 Route::get('/categoryData', [CategoryController::class, 'categoryData'])->name('categoryData');
+Route::get('category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
+Route::get('category/delete/{id}', [CategoryController::class, 'destroy'])->name('category.delete');
+
+
+//Brand-area
+Route::get('/brand', [BrandController::class, 'brand'])->name('brand');
+Route::post('/brandAdd', [BrandController::class, 'brandDataInsert'])->name('BrandDataInsert');
+Route::get('/brandData', [BrandController::class, 'brandData'])->name('BrandData');
+Route::get('brand/edit/{id}', [BrandController::class, 'brandEdit'])->name('brand.edit');
+Route::post('brand/update/{id}', [BrandController::class, 'brandUpdate'])->name('brand.update');
+Route::get('brand/delete/{id}', [BrandController::class, 'brandDestroy'])->name('brand.delete');
+
+
+//subcategory 
+Route::get('/subCategory', [SubCategoryController::class, 'subCategory'])->name('subCategory');
+Route::post('/subCategoryAdd', [SubCategoryController::class, 'subCategoryAdd'])->name('subCategoryAdd');
+Route::get('/subCategoryAll', [SubCategoryController::class, 'subCategoryAll'])->name('subCategoryAll');
+Route::get('subcategory/delete/{id}', [SubCategoryController::class, 'subCateDestroy'])->name('subcategory.delete');
 
 //product-area
 Route::get('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
+Route::post('/productDataSave', [ProductController::class, 'ProductStoreData'])->name('products.store');
 Route::get('/productData', [ProductController::class, 'productData'])->name('productData');
 
 

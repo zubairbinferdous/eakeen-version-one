@@ -12,9 +12,9 @@
 
                         </div>
                         <div class="-my-2 py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-                            <a href="{{ route('category') }}"
+                            <a href="{{ route('subCategory') }}"
                                 class=" mb-5  inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium  text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline">
-                                Create New Category
+                                Create New Sub Category
                             </a>
                             <div
                                 class="align-middle inline-block w-full shadow overflow-x-auto sm:rounded-lg border-b border-gray-200">
@@ -28,14 +28,14 @@
                                                 #
                                             </th>
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
-                                                category name
+                                                Sub Category Name
                                             </th>
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
-                                                images
+                                                Category
                                             </th>
 
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
-                                                action
+                                                Action
                                             </th>
                                         </tr>
                                     </thead>
@@ -44,7 +44,7 @@
                                     <tbody class="bg-white">
 
 
-                                        @foreach ($allCategory as $key => $item)
+                                        @foreach ($allSubcategory as $key => $item)
                                             <tr>
 
                                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
@@ -56,7 +56,7 @@
 
                                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                     <div class="text-sm leading-5 text-gray-900">
-                                                        {{ $item->category_name }}
+                                                        {{ $item->category->category_name }}
                                                     </div>
                                                 </td>
 
@@ -72,7 +72,7 @@
                                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                     <div class="text-sm leading-5 text-gray-900">
                                                         <div class="category-img">
-                                                            <img src=" {{ $item->category_image }}" alt="">
+                                                            {{ $item->subcategory_name }}
                                                         </div>
                                                     </div>
                                                 </td>
@@ -98,8 +98,8 @@
                                                                 Edit
                                                             </a>
                                                             <a class="ti-dropdown-item"
-                                                                href="{{ route('category.delete', $item->id) }}"
-                                                                onclick="return confirm('Are you sure you want to delete this category?')">
+                                                                href="{{ route('subcategory.delete', $item->id) }}"
+                                                                onclick="return confirm('Are you sure you want to delete this subcategory?')">
                                                                 Delete
                                                             </a>
 

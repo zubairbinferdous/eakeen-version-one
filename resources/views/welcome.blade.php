@@ -42,6 +42,7 @@
     <!-- Flatpickr Css -->
     <link rel="stylesheet" href="{{ asset('/assets/libs/flatpickr/flatpickr.min.css') }}">
 
+
 </head>
 
 <body class="">
@@ -593,6 +594,24 @@
 
                         <li class="slide__category"><span class="category-name">Product Information</span></li>
                         <!-- Start::slide -->
+
+                        <li class="slide  has-sub">
+                            <a href="javascript:void(0)" class="side-menu__item">
+                                <i class="ri-home-8-line side-menu__icon"></i>
+                                <span class="side-menu__label">Brand</span>
+                                <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
+                            </a>
+                            <ul class="slide-menu child1">
+                                <!-- <li class="slide side-menu__label1"><a href="javascript:void(0)">Dashboards</a></li> -->
+                                <li class="slide"><a href="{{ route('brand') }}" class="side-menu__item">Add
+                                        Brand</a>
+                                </li>
+                                <li class="slide"><a href="{{ route('BrandData') }}" class="side-menu__item">All
+                                        Brand</a>
+                                </li>
+                            </ul>
+                        </li>
+
                         <li class="slide  has-sub">
                             <a href="javascript:void(0)" class="side-menu__item">
                                 <i class="ri-home-8-line side-menu__icon"></i>
@@ -600,7 +619,7 @@
                                 <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
                             </a>
                             <ul class="slide-menu child1">
-                                <!-- <li class="slide side-menu__label1"><a href="javascript:void(0)">Dashboards</a></li> -->
+
                                 <li class="slide"><a href="{{ route('category') }}" class="side-menu__item">Add
                                         Category</a>
                                 </li>
@@ -616,14 +635,19 @@
                                 <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
                             </a>
                             <ul class="slide-menu child1">
-
-                                <li class="slide"><a href="{{ route('category') }}" class="side-menu__item">Add Sub
-                                        Category</a></li>
-                                <li class="slide"><a href="{{ route('categoryData') }}" class="side-menu__item">All
-                                        Sub
-                                        Category</a></li>
+                                <!-- <li class="slide side-menu__label1"><a href="javascript:void(0)">Dashboards</a></li> -->
+                                <li class="slide"><a href="{{ route('subCategory') }}" class="side-menu__item">Add
+                                        Sub Category</a>
+                                </li>
+                                <li class="slide"><a href="{{ route('subCategoryAll') }}"
+                                        class="side-menu__item">All
+                                        Sub Category</a>
+                                </li>
                             </ul>
                         </li>
+
+
+
                         <li class="slide  has-sub">
                             <a href="javascript:void(0)" class="side-menu__item">
                                 <i class="ri-home-8-line side-menu__icon"></i>
@@ -884,32 +908,7 @@
                                                         me</button>
                                                 </form>
                                             </div>
-                                            {{-- <a href="mail-inbox.html" class="ti-dropdown-item">
-                                                <i class="ti ti-inbox text-lg"></i>
-                                                Inbox
-                                            </a>
-                                            <a href="tasks.html" class="ti-dropdown-item">
-                                                <i class="ti ti-clipboard-check text-lg"></i>
-                                                Task Manager
-                                            </a>
-                                            <a href="profile-settings.html" class="ti-dropdown-item">
-                                                <i class="ti ti-adjustments-horizontal text-lg"></i>
-                                                Settings
-                                            </a>
-                                            <a href="index3.html" class="ti-dropdown-item">
-                                                <i class="ti ti-wallet text-lg"></i>
-                                                Bal: $7,12,950
-                                            </a> --}}
-                                            {{-- <form action="{{ route('logout') }}" method="POST">
-                                                @csrf
 
-                                                <button type="submit">
-                                                    <a href="#" class="ti-dropdown-item">
-                                                        <i class="ti ti-logout  text-lg"></i>
-                                                        Log Out
-                                                    </a>
-                                                </button>
-                                            </form> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -927,13 +926,7 @@
     </div>
 
 
-    <footer class="mt-auto py-3 border-t dark:border-white/10 bg-white dark:bg-bgdark">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p class="text-center">Copyright © <span id="year"></span> <a href="javascript:void(0)"
-                    class="text-primary">Eakenn</a>. Designed with <span class="ri ri-heart-fill text-red-500"></span>
-                by <a class="text-primary" href="javascript:void(0)"> Eakeen </a> </p>
-        </div>
-    </footer>
+
 
 
     </div>
@@ -1008,6 +1001,8 @@
 
     <!-- ADD Product JS -->
     <script src="{{ asset('/assets/js/addproduct.js') }}"></script>
+
+
 
 
 

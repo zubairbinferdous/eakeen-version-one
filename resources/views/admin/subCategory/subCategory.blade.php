@@ -17,24 +17,34 @@
                 <div class="col-span-12">
                     <div class="box">
                         <div class="box-header">
-                            <h5 class="box-title">New category</h5>
+                            <h5 class="box-title">New Sub Category</h5>
                         </div>
                         <div class="box-body">
-                            <form action="{{ route('categoryDataInsert') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('subCategoryAdd') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="grid lg:grid-cols-2 gap-6 space-y-4 lg:space-y-0">
-                                    <div class="space-y-2">
-                                        <label class="ti-form-label mb-0">category Name</label>
-                                        <input type="text" class="my-auto ti-form-input" placeholder="category"
-                                            name="category" required>
+
+
+                                    <div class="space-y-2 product-1">
+                                        <label class="ti-form-label mb-0">Category Name</label>
+                                        <select class="ti-form-select product-search" name="category_id">
+                                            <option value="">Select Category</option>
+
+                                            @foreach ($category as $item)
+                                                <option value="{{ $item->id }}">{{ $item->category_name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="space-y-2">
-                                        <label class="flex justify-between ti-form-label">
-                                            <span class="my-auto">category Images</span></label>
-                                        <input type="file" class="" name="categoryImg" required>
+                                        <label class="ti-form-label mb-0"> Sub Category Name</label>
+                                        <input type="text" class="my-auto ti-form-input" placeholder="sub category name"
+                                            name="subcategory_name" required>
                                     </div>
+
+
                                 </div>
-                                <button type="submit" class="ti-btn ti-btn-primary">Add New category</button>
+                                <br><br>
+                                <button type="submit" class="ti-btn ti-btn-primary">Add Sub Category</button>
                             </form>
                         </div>
                     </div>
