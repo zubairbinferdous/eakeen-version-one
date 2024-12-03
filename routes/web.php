@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BankController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OwnerController;
@@ -37,8 +38,9 @@ Route::middleware('auth')->group(function () {
 // admin-area 
 Route::get('/admin-dashboard', [posController::class, 'adminDashboard'])->name('admin_dashboard');
 
-
-Route::get('/bankData', [posController::class, 'bank'])->name('bankData');
+// bank
+Route::get('/bankData', [BankController::class, 'bank'])->name('bankData');
+Route::post('/newAccount', [BankController::class, 'newAccount'])->name('newAccount');
 
 Route::get('/sales', [posController::class, 'sales'])->name('sales');
 Route::get('/return', [posController::class, 'return'])->name('return');
@@ -83,6 +85,7 @@ Route::get('subcategory/delete/{id}', [SubCategoryController::class, 'subCateDes
 Route::get('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
 Route::post('/productDataSave', [ProductController::class, 'ProductStoreData'])->name('products.store');
 Route::get('/productData', [ProductController::class, 'productData'])->name('productData');
+Route::get('/productDelete/{id}', [ProductController::class, 'productDataDelete'])->name('product.delete');
 
 
 //pos-area
@@ -91,6 +94,8 @@ Route::get('/pos', [posController::class, 'pos'])->name('pos');
 //owner-area
 Route::get('/owner', [OwnerController::class, 'owner'])->name('owner');
 Route::get('/ownerData', [OwnerController::class, 'ownerData'])->name('ownerData');
+Route::post('/addUser', [OwnerController::class, 'addUser'])->name('addUser');
+Route::get('/deleteUser/{id}', [OwnerController::class, 'deleteUser'])->name('deleteUser');
 
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class posController extends Controller
@@ -9,7 +10,8 @@ class posController extends Controller
 
     public function pos()
     {
-        return view('admin.pos');
+        $data = Product::get();
+        return view('admin.pos ', compact('data'));
     }
 
 
@@ -20,10 +22,7 @@ class posController extends Controller
     }
 
 
-    public function bank()
-    {
-        return view('admin.bank');
-    }
+
 
     public function sales()
     {

@@ -20,22 +20,40 @@
                             <h5 class="box-title">New User</h5>
                         </div>
                         <div class="box-body">
-                            <form>
+                            <form action="{{ route('addUser') }}" method="POST">
+                                @csrf
                                 <div class="grid lg:grid-cols-2 gap-6 space-y-4 lg:space-y-0">
                                     <div class="space-y-2">
                                         <label class="ti-form-label mb-0"> Name</label>
-                                        <input type="text" class="my-auto ti-form-input" placeholder="Firstname">
+                                        <input type="text" class="my-auto ti-form-input" placeholder="name"
+                                            name="name">
                                     </div>
                                     <div class="space-y-2">
                                         <label class="ti-form-label mb-0">Mobile</label>
-                                        <input type="text" class="my-auto ti-form-input" placeholder="Lastname">
+                                        <input type="text" class="my-auto ti-form-input" placeholder="Mobile"
+                                            name="mobile">
                                     </div>
 
                                 </div>
                                 <div class="my-5">
                                     <div class="space-y-2">
                                         <label class="ti-form-label mb-0">Address</label>
-                                        <input type="text" class="my-auto ti-form-input" placeholder="Address">
+                                        <input type="text" class="my-auto ti-form-input" placeholder="Address"
+                                            name="address">
+                                    </div>
+                                </div>
+                                <div class="my-5">
+                                    <div class="space-y-2">
+                                        <label class="ti-form-label mb-0">invest</label>
+                                        <input type="text" class="my-auto ti-form-input" placeholder="invest"
+                                            name="invest">
+                                    </div>
+                                </div>
+                                <div class="my-5">
+                                    <div class="space-y-2">
+                                        <label class="ti-form-label mb-0">withdraw</label>
+                                        <input type="text" class="my-auto ti-form-input" placeholder="withdraw"
+                                            name="withdraw">
                                     </div>
                                 </div>
 

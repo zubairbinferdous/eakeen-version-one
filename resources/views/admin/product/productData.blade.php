@@ -6,7 +6,7 @@
         <div class="main-content">
 
             <!-- Page Header -->
-            <div class="block justify-between page-header md:flex">
+            {{-- <div class="block justify-between page-header md:flex">
                 <div>
                     <h3 class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-white text-2xl font-medium">
                         Product List</h3>
@@ -24,7 +24,7 @@
                         Product List
                     </li>
                 </ol>
-            </div>
+            </div> --}}
             <!-- Page Header Close -->
 
             <!-- Start::row-1 -->
@@ -40,46 +40,45 @@
                         <table class="ti-custom-table ti-custom-table-head edit-table">
                             <thead class="bg-gray-100 dark:bg-black/20">
                                 <tr class="">
-
-                                    <th scope="col" class="dark:text-white/70">Product Id</th>
-                                    <th scope="col" class="dark:text-white/70">Product</th>
-                                    <th scope="col" class="dark:text-white/70">Category</th>
-                                    <th scope="col" class="dark:text-white/70">Price</th>
-                                    <th scope="col" class="dark:text-white/70">Stock</th>
-                                    <th scope="col" class="dark:text-white/70">Status</th>
-                                    <th scope="col" class="dark:text-white/70">Date</th>
-                                    <th scope="col" class="!text-end dark:text-white/70">Action</th>
+                                    <th scope="col" class="dark:text-white/70 ">Product Id</th>
+                                    <th scope="col" class="dark:text-white/70 ">Product</th>
+                                    <th scope="col" class="dark:text-white/70 ">status</th>
+                                    <th scope="col" class="dark:text-white/70 ">visibility</th>
+                                    <th scope="col" class="dark:text-white/70 ">coin</th>
+                                    <th scope="col" class="dark:text-white/70 ">actual price</th>
+                                    <th scope="col" class="dark:text-white/70 ">discount price</th>
+                                    <th scope="col" class="!text-end dark:text-white/70 ">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($data as $key => $item)
                                     <tr class="product-list">
 
-                                        <td class="font-semibold">#spk1521</td>
+                                        <td class="font-semibold ">{{ $item->product_id }}</td>
                                         <td>
                                             <div class="flex space-x-3 rtl:space-x-reverse">
                                                 <img class="avatar avatar-sm rounded-sm bg-gray-100 dark:bg-black/20 p-1"
-                                                    src="../assets/img/ecommerce/products/2.png" alt="Image Description">
+                                                    src="{{ $item->ProductImages }}" alt="Image Description">
                                                 <span
                                                     class="block text-sm font-semibold text-gray-800 dark:text-white my-auto truncate lg:max-w-[100px]">
-                                                    Shirts For Men</span>
+                                                    {{ $item->product_title }}</span>
                                             </div>
                                         </td>
-                                        <td>Clothing</td>
-                                        <td>$999</td>
-                                        <td>Instock</td>
-                                        <td>Published</td>
-                                        <td>01-01-2023</td>
+                                        <td class="">{{ $item->status }}</td>
+                                        <td class="">{{ $item->visibility }}</td>
+                                        <td class="">{{ $item->coin }}</td>
+                                        <td class="">{{ $item->actual_price }}</td>
+                                        <td class="">{{ $item->discount_price }}</td>
                                         <td class="text-end font-medium">
-                                            <a aria-label="anchor" href="products-details.html"
+                                            {{-- <a aria-label="anchor" href="products-details.html"
                                                 class="w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-warning">
                                                 <i class="ti ti-eye"></i>
-                                            </a>
+                                            </a> --}}
                                             <a aria-label="anchor" href="edit-product.html"
                                                 class="w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-secondary">
                                                 <i class="ti ti-pencil"></i>
                                             </a>
-                                            <a aria-label="anchor" href="javascript:void(0);"
+                                            <a aria-label="anchor" href="{{ route('product.delete', $item->id) }}"
                                                 class="product-btn w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-danger">
                                                 <i class="ti ti-trash"></i>
                                             </a>

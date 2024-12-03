@@ -26,7 +26,7 @@
                 <div class="col-span-12 xl:col-span-5">
                     <div class="box">
                         <div class="box-body">
-                            <div class="relative mb-2">
+                            {{-- <div class="relative mb-2">
                                 <label for="hs-table-search" class="sr-only">Search Barcode</label>
                                 <div class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-4 rtl:pl-4">
                                     <svg class="h-3.5 w-3.5 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="16"
@@ -37,7 +37,7 @@
                                     </svg>
                                 </div><input type="text" name="hs-table-search" id="hs-table-search"
                                     class="p-3 ltr:pr-10 rtl:pl-10 ti-form-input" placeholder="Search Barcode">
-                            </div>
+                            </div> --}}
                             <div class="relative mb-2">
                                 <label for="hs-table-search" class="sr-only">Product name</label>
                                 <div class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center ltr:pr-4 rtl:pl-4">
@@ -183,565 +183,50 @@
                     </div>
                     <div class="grid grid-cols-12 gap-x-6">
 
-                        <div class="col-span-12 md:col-span-2 xxl:!col-span-2">
-                            <div class="product-box box">
-                                <div class="box-body space-y-2">
-                                    <div class="product-image">
-                                        <a href="products-details.html" class="image">
-                                            <img class="mx-auto rounded-sm" src="../assets/img/ecommerce/products/2.png"
-                                                alt="img">
-                                        </a>
-
-                                        <!-- <div class="product-icons">
-                                                                                    
-                                                                                                                                    <a aria-label="anchor" href="cart.html"
-                                                                                                                                        class="z-40 absolute top-2 ltr:right-2 rtl:left-2 block bg-white dark:bg-bgdark p-2 leading-none rounded-full text-gray-500 dark:text-white text-base"><i
-                                                                                                                                            class="ri ri-shopping-cart-2-line"></i></a>
-                                                                                    
-                                                                                                                                </div> -->
-
-                                    </div>
-                                    <div class="product-details space-y-1">
-                                        <h5 class="text-xs font-semibold">Tshirt For Men </h5>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
+                        @foreach ($data as $item)
+                            <div class="col-span-12 md:col-span-2 xxl:!col-span-2">
+                                <div class="product-box box">
+                                    <div class="box-body space-y-2">
+                                        <div class="product-image">
+                                            <a href="products-details.html" class="image">
+                                                <img class="mx-auto rounded-sm" src="{{ $item->ProductImages }}"
+                                                    alt="img">
+                                            </a>
                                         </div>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                            <h5 class="text-sm font-semibold">$245</h5>
+                                        <div class="product-details space-y-1">
+                                            <h5 class="text-xs font-semibold">{{ $item->product_title }}</h5>
+                                            <div class="flex space-x-2 rtl:space-x-reverse">
+                                            </div>
+                                            <div class="flex space-x-2 rtl:space-x-reverse">
+                                                <h5 class="text-sm font-semibold">{{ $item->actual_price }}</h5>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-span-12 md:col-span-2 xxl:!col-span-2">
-                            <div class="product-box box">
-                                <div class="box-body space-y-2">
-                                    <div class="product-image">
-                                        <a href="products-details.html" class="image">
-                                            <img class="mx-auto rounded-sm" src="../assets/img/ecommerce/products/2.png"
-                                                alt="img">
-                                        </a>
-
-                                        <!-- <div class="product-icons">
-                                                                                    
-                                                                                                                                    <a aria-label="anchor" href="cart.html"
-                                                                                                                                        class="z-40 absolute top-2 ltr:right-2 rtl:left-2 block bg-white dark:bg-bgdark p-2 leading-none rounded-full text-gray-500 dark:text-white text-base"><i
-                                                                                                                                            class="ri ri-shopping-cart-2-line"></i></a>
-                                                                                    
-                                                                                                                                </div> -->
-
-                                    </div>
-                                    <div class="product-details space-y-1">
-                                        <h5 class="text-xs font-semibold">Tshirt For Men </h5>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                        </div>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                            <h5 class="text-sm font-semibold">$245</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-span-12 md:col-span-2 xxl:!col-span-2">
-                            <div class="product-box box">
-                                <div class="box-body space-y-2">
-                                    <div class="product-image">
-                                        <a href="products-details.html" class="image">
-                                            <img class="mx-auto rounded-sm" src="../assets/img/ecommerce/products/2.png"
-                                                alt="img">
-                                        </a>
-
-                                        <!-- <div class="product-icons">
-                                                                                    
-                                                                                                                                    <a aria-label="anchor" href="cart.html"
-                                                                                                                                        class="z-40 absolute top-2 ltr:right-2 rtl:left-2 block bg-white dark:bg-bgdark p-2 leading-none rounded-full text-gray-500 dark:text-white text-base"><i
-                                                                                                                                            class="ri ri-shopping-cart-2-line"></i></a>
-                                                                                    
-                                                                                                                                </div> -->
-
-                                    </div>
-                                    <div class="product-details space-y-1">
-                                        <h5 class="text-xs font-semibold">Tshirt For Men </h5>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                        </div>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                            <h5 class="text-sm font-semibold">$245</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-span-12 md:col-span-2 xxl:!col-span-2">
-                            <div class="product-box box">
-                                <div class="box-body space-y-2">
-                                    <div class="product-image">
-                                        <a href="products-details.html" class="image">
-                                            <img class="mx-auto rounded-sm" src="../assets/img/ecommerce/products/2.png"
-                                                alt="img">
-                                        </a>
-
-                                        <!-- <div class="product-icons">
-                                                                                    
-                                                                                                                                    <a aria-label="anchor" href="cart.html"
-                                                                                                                                        class="z-40 absolute top-2 ltr:right-2 rtl:left-2 block bg-white dark:bg-bgdark p-2 leading-none rounded-full text-gray-500 dark:text-white text-base"><i
-                                                                                                                                            class="ri ri-shopping-cart-2-line"></i></a>
-                                                                                    
-                                                                                                                                </div> -->
-
-                                    </div>
-                                    <div class="product-details space-y-1">
-                                        <h5 class="text-xs font-semibold">Tshirt For Men </h5>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                        </div>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                            <h5 class="text-sm font-semibold">$245</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-span-12 md:col-span-2 xxl:!col-span-2">
-                            <div class="product-box box">
-                                <div class="box-body space-y-2">
-                                    <div class="product-image">
-                                        <a href="products-details.html" class="image">
-                                            <img class="mx-auto rounded-sm" src="../assets/img/ecommerce/products/2.png"
-                                                alt="img">
-                                        </a>
-
-                                        <!-- <div class="product-icons">
-                                                                                    
-                                                                                                                                    <a aria-label="anchor" href="cart.html"
-                                                                                                                                        class="z-40 absolute top-2 ltr:right-2 rtl:left-2 block bg-white dark:bg-bgdark p-2 leading-none rounded-full text-gray-500 dark:text-white text-base"><i
-                                                                                                                                            class="ri ri-shopping-cart-2-line"></i></a>
-                                                                                    
-                                                                                                                                </div> -->
-
-                                    </div>
-                                    <div class="product-details space-y-1">
-                                        <h5 class="text-xs font-semibold">Tshirt For Men </h5>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                        </div>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                            <h5 class="text-sm font-semibold">$245</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-span-12 md:col-span-2 xxl:!col-span-2">
-                            <div class="product-box box">
-                                <div class="box-body space-y-2">
-                                    <div class="product-image">
-                                        <a href="products-details.html" class="image">
-                                            <img class="mx-auto rounded-sm" src="../assets/img/ecommerce/products/2.png"
-                                                alt="img">
-                                        </a>
-
-                                        <!-- <div class="product-icons">
-                                                                                    
-                                                                                                                                    <a aria-label="anchor" href="cart.html"
-                                                                                                                                        class="z-40 absolute top-2 ltr:right-2 rtl:left-2 block bg-white dark:bg-bgdark p-2 leading-none rounded-full text-gray-500 dark:text-white text-base"><i
-                                                                                                                                            class="ri ri-shopping-cart-2-line"></i></a>
-                                                                                    
-                                                                                                                                </div> -->
-
-                                    </div>
-                                    <div class="product-details space-y-1">
-                                        <h5 class="text-xs font-semibold">Tshirt For Men </h5>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                        </div>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                            <h5 class="text-sm font-semibold">$245</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-span-12 md:col-span-2 xxl:!col-span-2">
-                            <div class="product-box box">
-                                <div class="box-body space-y-2">
-                                    <div class="product-image">
-                                        <a href="products-details.html" class="image">
-                                            <img class="mx-auto rounded-sm" src="../assets/img/ecommerce/products/2.png"
-                                                alt="img">
-                                        </a>
-
-                                        <!-- <div class="product-icons">
-                                                                                    
-                                                                                                                                    <a aria-label="anchor" href="cart.html"
-                                                                                                                                        class="z-40 absolute top-2 ltr:right-2 rtl:left-2 block bg-white dark:bg-bgdark p-2 leading-none rounded-full text-gray-500 dark:text-white text-base"><i
-                                                                                                                                            class="ri ri-shopping-cart-2-line"></i></a>
-                                                                                    
-                                                                                                                                </div> -->
-
-                                    </div>
-                                    <div class="product-details space-y-1">
-                                        <h5 class="text-xs font-semibold">Tshirt For Men </h5>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                        </div>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                            <h5 class="text-sm font-semibold">$245</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-span-12 md:col-span-2 xxl:!col-span-2">
-                            <div class="product-box box">
-                                <div class="box-body space-y-2">
-                                    <div class="product-image">
-                                        <a href="products-details.html" class="image">
-                                            <img class="mx-auto rounded-sm" src="../assets/img/ecommerce/products/2.png"
-                                                alt="img">
-                                        </a>
-
-                                        <!-- <div class="product-icons">
-                                                                                    
-                                                                                                                                    <a aria-label="anchor" href="cart.html"
-                                                                                                                                        class="z-40 absolute top-2 ltr:right-2 rtl:left-2 block bg-white dark:bg-bgdark p-2 leading-none rounded-full text-gray-500 dark:text-white text-base"><i
-                                                                                                                                            class="ri ri-shopping-cart-2-line"></i></a>
-                                                                                    
-                                                                                                                                </div> -->
-
-                                    </div>
-                                    <div class="product-details space-y-1">
-                                        <h5 class="text-xs font-semibold">Tshirt For Men </h5>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                        </div>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                            <h5 class="text-sm font-semibold">$245</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-span-12 md:col-span-2 xxl:!col-span-2">
-                            <div class="product-box box">
-                                <div class="box-body space-y-2">
-                                    <div class="product-image">
-                                        <a href="products-details.html" class="image">
-                                            <img class="mx-auto rounded-sm" src="../assets/img/ecommerce/products/2.png"
-                                                alt="img">
-                                        </a>
-
-                                        <!-- <div class="product-icons">
-                                                                                    
-                                                                                                                                    <a aria-label="anchor" href="cart.html"
-                                                                                                                                        class="z-40 absolute top-2 ltr:right-2 rtl:left-2 block bg-white dark:bg-bgdark p-2 leading-none rounded-full text-gray-500 dark:text-white text-base"><i
-                                                                                                                                            class="ri ri-shopping-cart-2-line"></i></a>
-                                                                                    
-                                                                                                                                </div> -->
-
-                                    </div>
-                                    <div class="product-details space-y-1">
-                                        <h5 class="text-xs font-semibold">Tshirt For Men </h5>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                        </div>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                            <h5 class="text-sm font-semibold">$245</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-span-12 md:col-span-2 xxl:!col-span-2">
-                            <div class="product-box box">
-                                <div class="box-body space-y-2">
-                                    <div class="product-image">
-                                        <a href="products-details.html" class="image">
-                                            <img class="mx-auto rounded-sm" src="../assets/img/ecommerce/products/2.png"
-                                                alt="img">
-                                        </a>
-
-                                        <!-- <div class="product-icons">
-                                                                                    
-                                                                                                                                    <a aria-label="anchor" href="cart.html"
-                                                                                                                                        class="z-40 absolute top-2 ltr:right-2 rtl:left-2 block bg-white dark:bg-bgdark p-2 leading-none rounded-full text-gray-500 dark:text-white text-base"><i
-                                                                                                                                            class="ri ri-shopping-cart-2-line"></i></a>
-                                                                                    
-                                                                                                                                </div> -->
-
-                                    </div>
-                                    <div class="product-details space-y-1">
-                                        <h5 class="text-xs font-semibold">Tshirt For Men </h5>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                        </div>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                            <h5 class="text-sm font-semibold">$245</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-span-12 md:col-span-2 xxl:!col-span-2">
-                            <div class="product-box box">
-                                <div class="box-body space-y-2">
-                                    <div class="product-image">
-                                        <a href="products-details.html" class="image">
-                                            <img class="mx-auto rounded-sm" src="../assets/img/ecommerce/products/2.png"
-                                                alt="img">
-                                        </a>
-
-                                        <!-- <div class="product-icons">
-                                                                                    
-                                                                                                                                    <a aria-label="anchor" href="cart.html"
-                                                                                                                                        class="z-40 absolute top-2 ltr:right-2 rtl:left-2 block bg-white dark:bg-bgdark p-2 leading-none rounded-full text-gray-500 dark:text-white text-base"><i
-                                                                                                                                            class="ri ri-shopping-cart-2-line"></i></a>
-                                                                                    
-                                                                                                                                </div> -->
-
-                                    </div>
-                                    <div class="product-details space-y-1">
-                                        <h5 class="text-xs font-semibold">Tshirt For Men </h5>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                        </div>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                            <h5 class="text-sm font-semibold">$245</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-span-12 md:col-span-2 xxl:!col-span-2">
-                            <div class="product-box box">
-                                <div class="box-body space-y-2">
-                                    <div class="product-image">
-                                        <a href="products-details.html" class="image">
-                                            <img class="mx-auto rounded-sm" src="../assets/img/ecommerce/products/2.png"
-                                                alt="img">
-                                        </a>
-
-                                        <!-- <div class="product-icons">
-                                                                                    
-                                                                                                                                    <a aria-label="anchor" href="cart.html"
-                                                                                                                                        class="z-40 absolute top-2 ltr:right-2 rtl:left-2 block bg-white dark:bg-bgdark p-2 leading-none rounded-full text-gray-500 dark:text-white text-base"><i
-                                                                                                                                            class="ri ri-shopping-cart-2-line"></i></a>
-                                                                                    
-                                                                                                                                </div> -->
-
-                                    </div>
-                                    <div class="product-details space-y-1">
-                                        <h5 class="text-xs font-semibold">Tshirt For Men </h5>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                        </div>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                            <h5 class="text-sm font-semibold">$245</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-span-12 md:col-span-2 xxl:!col-span-2">
-                            <div class="product-box box">
-                                <div class="box-body space-y-2">
-                                    <div class="product-image">
-                                        <a href="products-details.html" class="image">
-                                            <img class="mx-auto rounded-sm" src="../assets/img/ecommerce/products/2.png"
-                                                alt="img">
-                                        </a>
-
-                                        <!-- <div class="product-icons">
-                                                                                    
-                                                                                                                                    <a aria-label="anchor" href="cart.html"
-                                                                                                                                        class="z-40 absolute top-2 ltr:right-2 rtl:left-2 block bg-white dark:bg-bgdark p-2 leading-none rounded-full text-gray-500 dark:text-white text-base"><i
-                                                                                                                                            class="ri ri-shopping-cart-2-line"></i></a>
-                                                                                    
-                                                                                                                                </div> -->
-
-                                    </div>
-                                    <div class="product-details space-y-1">
-                                        <h5 class="text-xs font-semibold">Tshirt For Men </h5>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                        </div>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                            <h5 class="text-sm font-semibold">$245</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-span-12 md:col-span-2 xxl:!col-span-2">
-                            <div class="product-box box">
-                                <div class="box-body space-y-2">
-                                    <div class="product-image">
-                                        <a href="products-details.html" class="image">
-                                            <img class="mx-auto rounded-sm" src="../assets/img/ecommerce/products/2.png"
-                                                alt="img">
-                                        </a>
-
-                                        <!-- <div class="product-icons">
-                                                                                    
-                                                                                                                                    <a aria-label="anchor" href="cart.html"
-                                                                                                                                        class="z-40 absolute top-2 ltr:right-2 rtl:left-2 block bg-white dark:bg-bgdark p-2 leading-none rounded-full text-gray-500 dark:text-white text-base"><i
-                                                                                                                                            class="ri ri-shopping-cart-2-line"></i></a>
-                                                                                    
-                                                                                                                                </div> -->
-
-                                    </div>
-                                    <div class="product-details space-y-1">
-                                        <h5 class="text-xs font-semibold">Tshirt For Men </h5>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                        </div>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                            <h5 class="text-sm font-semibold">$245</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-span-12 md:col-span-2 xxl:!col-span-2">
-                            <div class="product-box box">
-                                <div class="box-body space-y-2">
-                                    <div class="product-image">
-                                        <a href="products-details.html" class="image">
-                                            <img class="mx-auto rounded-sm" src="../assets/img/ecommerce/products/2.png"
-                                                alt="img">
-                                        </a>
-
-                                        <!-- <div class="product-icons">
-                                                                                    
-                                                                                                                                    <a aria-label="anchor" href="cart.html"
-                                                                                                                                        class="z-40 absolute top-2 ltr:right-2 rtl:left-2 block bg-white dark:bg-bgdark p-2 leading-none rounded-full text-gray-500 dark:text-white text-base"><i
-                                                                                                                                            class="ri ri-shopping-cart-2-line"></i></a>
-                                                                                    
-                                                                                                                                </div> -->
-
-                                    </div>
-                                    <div class="product-details space-y-1">
-                                        <h5 class="text-xs font-semibold">Tshirt For Men </h5>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                        </div>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                            <h5 class="text-sm font-semibold">$245</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-span-12 md:col-span-2 xxl:!col-span-2">
-                            <div class="product-box box">
-                                <div class="box-body space-y-2">
-                                    <div class="product-image">
-                                        <a href="products-details.html" class="image">
-                                            <img class="mx-auto rounded-sm" src="../assets/img/ecommerce/products/2.png"
-                                                alt="img">
-                                        </a>
-
-                                        <!-- <div class="product-icons">
-                                                                                    
-                                                                                                                                    <a aria-label="anchor" href="cart.html"
-                                                                                                                                        class="z-40 absolute top-2 ltr:right-2 rtl:left-2 block bg-white dark:bg-bgdark p-2 leading-none rounded-full text-gray-500 dark:text-white text-base"><i
-                                                                                                                                            class="ri ri-shopping-cart-2-line"></i></a>
-                                                                                    
-                                                                                                                                </div> -->
-
-                                    </div>
-                                    <div class="product-details space-y-1">
-                                        <h5 class="text-xs font-semibold">Tshirt For Men </h5>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                        </div>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                            <h5 class="text-sm font-semibold">$245</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-span-12 md:col-span-2 xxl:!col-span-2">
-                            <div class="product-box box">
-                                <div class="box-body space-y-2">
-                                    <div class="product-image">
-                                        <a href="products-details.html" class="image">
-                                            <img class="mx-auto rounded-sm" src="../assets/img/ecommerce/products/2.png"
-                                                alt="img">
-                                        </a>
-
-                                        <!-- <div class="product-icons">
-                                                                                    
-                                                                                                                                    <a aria-label="anchor" href="cart.html"
-                                                                                                                                        class="z-40 absolute top-2 ltr:right-2 rtl:left-2 block bg-white dark:bg-bgdark p-2 leading-none rounded-full text-gray-500 dark:text-white text-base"><i
-                                                                                                                                            class="ri ri-shopping-cart-2-line"></i></a>
-                                                                                    
-                                                                                                                                </div> -->
-
-                                    </div>
-                                    <div class="product-details space-y-1">
-                                        <h5 class="text-xs font-semibold">Tshirt For Men </h5>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                        </div>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                            <h5 class="text-sm font-semibold">$245</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-span-12 md:col-span-2 xxl:!col-span-2">
-                            <div class="product-box box">
-                                <div class="box-body space-y-2">
-                                    <div class="product-image">
-                                        <a href="products-details.html" class="image">
-                                            <img class="mx-auto rounded-sm" src="../assets/img/ecommerce/products/2.png"
-                                                alt="img">
-                                        </a>
-
-                                        <!-- <div class="product-icons">
-                                                                                    
-                                                                                                                                    <a aria-label="anchor" href="cart.html"
-                                                                                                                                        class="z-40 absolute top-2 ltr:right-2 rtl:left-2 block bg-white dark:bg-bgdark p-2 leading-none rounded-full text-gray-500 dark:text-white text-base"><i
-                                                                                                                                            class="ri ri-shopping-cart-2-line"></i></a>
-                                                                                    
-                                                                                                                                </div> -->
-
-                                    </div>
-                                    <div class="product-details space-y-1">
-                                        <h5 class="text-xs font-semibold">Tshirt For Men </h5>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                        </div>
-                                        <div class="flex space-x-2 rtl:space-x-reverse">
-                                            <h5 class="text-sm font-semibold">$245</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
 
 
 
                     </div>
                     <!-- <nav class="flex justify-end items-center space-x-2 rtl:space-x-reverse mb-5">
-                                                                                                                <a class="w-10 h-10 bg-gray-100 text-gray-500 dark:text-white/70 dark:bg-black/20 hover:bg-primary hover:text-white p-2 inline-flex justify-center text-sm font-medium items-center gap-2 rounded-full"
-                                                                                                                    href="javascript:void(0);">
-                                                                                                                    <span aria-hidden="true">«</span>
-                                                                                                                    <span class="sr-only">Previous</span>
-                                                                                                                </a>
-                                                                                                                <a class="w-10 h-10 bg-primary text-white p-2 inline-flex items-center justify-center text-sm font-medium rounded-full"
-                                                                                                                    href="javascript:void(0);" aria-current="page">1</a>
-                                                                                                                <a class="w-10 h-10 bg-gray-100 text-gray-500 dark:text-white/70 dark:bg-black/20 hover:bg-primary hover:text-white p-2 inline-flex justify-center items-center text-sm font-medium rounded-full"
-                                                                                                                    href="javascript:void(0);">2</a>
-                                                                                                                <a class="w-10 h-10 bg-gray-100 text-gray-500 dark:text-white/70 dark:bg-black/20 hover:bg-primary hover:text-white p-2 inline-flex justify-center items-center text-sm font-medium rounded-full"
-                                                                                                                    href="javascript:void(0);">3</a>
-                                                                                                                <a class="w-10 h-10 bg-gray-100 text-gray-500 dark:text-white/70 dark:bg-black/20 hover:bg-primary hover:text-white p-2 inline-flex justify-center text-sm font-medium items-center gap-2 rounded-full"
-                                                                                                                    href="javascript:void(0);">
-                                                                                                                    <span class="sr-only">Next</span>
-                                                                                                                    <span aria-hidden="true">»</span>
-                                                                                                                </a>
-                                                                                                            </nav> -->
+                                                                                                                                                                <a class="w-10 h-10 bg-gray-100 text-gray-500 dark:text-white/70 dark:bg-black/20 hover:bg-primary hover:text-white p-2 inline-flex justify-center text-sm font-medium items-center gap-2 rounded-full"
+                                                                                                                                                                    href="javascript:void(0);">
+                                                                                                                                                                    <span aria-hidden="true">«</span>
+                                                                                                                                                                    <span class="sr-only">Previous</span>
+                                                                                                                                                                </a>
+                                                                                                                                                                <a class="w-10 h-10 bg-primary text-white p-2 inline-flex items-center justify-center text-sm font-medium rounded-full"
+                                                                                                                                                                    href="javascript:void(0);" aria-current="page">1</a>
+                                                                                                                                                                <a class="w-10 h-10 bg-gray-100 text-gray-500 dark:text-white/70 dark:bg-black/20 hover:bg-primary hover:text-white p-2 inline-flex justify-center items-center text-sm font-medium rounded-full"
+                                                                                                                                                                    href="javascript:void(0);">2</a>
+                                                                                                                                                                <a class="w-10 h-10 bg-gray-100 text-gray-500 dark:text-white/70 dark:bg-black/20 hover:bg-primary hover:text-white p-2 inline-flex justify-center items-center text-sm font-medium rounded-full"
+                                                                                                                                                                    href="javascript:void(0);">3</a>
+                                                                                                                                                                <a class="w-10 h-10 bg-gray-100 text-gray-500 dark:text-white/70 dark:bg-black/20 hover:bg-primary hover:text-white p-2 inline-flex justify-center text-sm font-medium items-center gap-2 rounded-full"
+                                                                                                                                                                    href="javascript:void(0);">
+                                                                                                                                                                    <span class="sr-only">Next</span>
+                                                                                                                                                                    <span aria-hidden="true">»</span>
+                                                                                                                                                                </a>
+                                                                                                                                                            </nav> -->
                 </div>
             </div>
 

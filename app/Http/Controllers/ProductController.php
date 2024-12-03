@@ -19,7 +19,7 @@ class ProductController extends Controller
     }
     public function productData()
     {
-        $data = Product::select('id', 'product_title', 'product_id', 'status', 'visibility', 'coin', 'ProductImages')->orderBy('id', 'desc')->get();
+        $data = Product::select('id', 'product_title', 'product_id', 'status', 'visibility', 'coin', 'ProductImages', 'discount_price', 'actual_price')->orderBy('id', 'desc')->get();
         return view('admin.product.productData', compact('data'));
     }
 
@@ -87,5 +87,12 @@ class ProductController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Product added successfully!');
+    }
+
+    public function productDataDelete(Request $request, $id)
+    {
+        $data = Product::findOrFail($id);
+        $data->delete();
+        return redirect()->back()->with('warning', 'Product Delete successfully!');
     }
 }
