@@ -3,6 +3,7 @@
 use App\Http\Controllers\BankController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\posController;
 use App\Http\Controllers\ProductController;
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('auth.login');
 });
 
@@ -35,26 +36,24 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// front-end-area 
+
+Route::get('/', [FrontendController::class, 'homePage'])->name('home');
+Route::get('/shop', [FrontendController::class, 'shop'])->name('shop');
+
+
+
+
+
+
+
+
 // admin-area 
 Route::get('/admin-dashboard', [posController::class, 'adminDashboard'])->name('admin_dashboard');
 
 // bank
 Route::get('/bankData', [BankController::class, 'bank'])->name('bankData');
 Route::post('/newAccount', [BankController::class, 'newAccount'])->name('newAccount');
-
-Route::get('/sales', [posController::class, 'sales'])->name('sales');
-Route::get('/return', [posController::class, 'return'])->name('return');
-Route::get('/addPurchases', [posController::class, 'addPurchases'])->name('addPurchases');
-Route::get('/addPurchasesData', [posController::class, 'addPurchasesData'])->name('addPurchasesData');
-Route::get('/addDamages', [posController::class, 'addDamages'])->name('addDamages');
-Route::get('/addDamagesData', [posController::class, 'addDamagesData'])->name('addDamagesData');
-
-
-Route::get('/confirm', [posController::class, 'confirm'])->name('confirm');
-Route::get('/pending', [posController::class, 'pending'])->name('pending');
-
-
-
 
 
 // category-area
@@ -96,6 +95,18 @@ Route::get('/owner', [OwnerController::class, 'owner'])->name('owner');
 Route::get('/ownerData', [OwnerController::class, 'ownerData'])->name('ownerData');
 Route::post('/addUser', [OwnerController::class, 'addUser'])->name('addUser');
 Route::get('/deleteUser/{id}', [OwnerController::class, 'deleteUser'])->name('deleteUser');
+
+
+// sales pos 
+Route::get('/sales', [posController::class, 'sales'])->name('sales');
+Route::get('/return', [posController::class, 'return'])->name('return');
+Route::get('/addPurchases', [posController::class, 'addPurchases'])->name('addPurchases');
+Route::get('/addPurchasesData', [posController::class, 'addPurchasesData'])->name('addPurchasesData');
+Route::get('/addDamages', [posController::class, 'addDamages'])->name('addDamages');
+Route::get('/addDamagesData', [posController::class, 'addDamagesData'])->name('addDamagesData');
+Route::get('/confirm', [posController::class, 'confirm'])->name('confirm');
+Route::get('/pending', [posController::class, 'pending'])->name('pending');
+
 
 
 
