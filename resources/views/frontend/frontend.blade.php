@@ -357,6 +357,10 @@
                 </div>
                 <!-- Logo End  -->
 
+                @php
+                    $category = App\Models\Category::get();
+                @endphp
+
                 <!-- form location Start -->
                 <form action="#" class="flex-align flex-wrap form-location-wrapper">
                     <div

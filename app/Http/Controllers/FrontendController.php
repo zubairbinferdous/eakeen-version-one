@@ -15,6 +15,8 @@ class FrontendController extends Controller
         $Product = Product::get();
         return view('frontend.homePageArea', compact('category', 'Product'));
     }
+
+
     public function shop()
     {
         $brand = Brand::get();
