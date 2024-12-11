@@ -39,6 +39,10 @@
         .mtb100 {
             margin: 100px 0px;
         }
+
+        .ml100 {
+            margin-left: 20px;
+        }
     </style>
 
 
@@ -49,9 +53,9 @@
                 <div class="profile-card ">
                     <div class="text-center mb-4">
                         <img src="https://via.placeholder.com/100" class="rounded-circle mb-3" alt="User Avatar">
-                        <h5>zubair</h5>
-                        <p class="text-muted">zubairbinft@gmail.com</p>
-                        <p class="text-muted">01924495997</p>
+                        <h5>{{ auth()->user()->name }}</h5>
+                        <p class="text-muted">{{ auth()->user()->email }}</p>
+                        <p class="text-muted">{{ auth()->user()->phone }}</p>
                     </div>
                     <hr>
                     <nav>
@@ -74,11 +78,14 @@
                         <a href="#" class="sidebar-option">
                             <i class="bi bi-bell"></i> Notification
                         </a>
-                        <form action="{{ route('logout') }}" method="POST">
-                            @csrf
-                            <button class="btn btn=success">Logout</button>
-                        </form>
+
                     </nav>
+                    <form action="{{ route('logout') }}" method="POST" class="ml100">
+                        @csrf
+                        <div class="d-flex justify-center align-item-center mt10">
+                            <button class="btn-success btn-sm btn ">Logout</button>
+                        </div>
+                    </form>
                 </div>
             </div>
 

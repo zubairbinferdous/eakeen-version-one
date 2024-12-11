@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Template </title>
+    <title>Admin</title>
     <meta name="description"
         content="A Tailwind CSS admin template is a pre-designed web page for an admin dashboard. Optimizing it for SEO includes using meta descriptions and ensuring it's responsive and fast-loading.">
     <meta name="keywords"
@@ -43,7 +43,16 @@
     <link rel="stylesheet" href="{{ asset('/assets/libs/flatpickr/flatpickr.min.css') }}">
 
 
+
+
 </head>
+<style>
+    .main-sidebar-header img {
+        margin-left: 20px;
+        margin-bottom: 10px;
+        display: inline-block;
+    }
+</style>
 
 <body class="">
 
@@ -489,17 +498,10 @@
         <aside class="app-sidebar" id="sidebar">
 
             <!-- Start::main-sidebar-header -->
-            <div class="main-sidebar-header">
-                <a href="index.html" class="header-logo">
-                    <img src="../assets/img/brand-logos/desktop-logo.png" alt="logo"
-                        class="main-logo desktop-logo">
-                    <img src="../assets/img/brand-logos/toggle-logo.png" alt="logo"
-                        class="main-logo toggle-logo">
-                    <img src="../assets/img/brand-logos/desktop-dark.png" alt="logo"
-                        class="main-logo desktop-dark">
-                    <img src="../assets/img/brand-logos/toggle-dark.png" alt="logo"
-                        class="main-logo toggle-dark">
-                </a>
+            <div class="main-sidebar-header" class="ml10">
+
+                <img src="{{ asset('front/assets/images/logo/loho.png') }}" alt="Logo">
+
             </div>
             <!-- End::main-sidebar-header -->
 

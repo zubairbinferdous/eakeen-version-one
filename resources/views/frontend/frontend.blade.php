@@ -48,9 +48,17 @@
         height: auto;
     }
 
-    .product-card__thumb img {
+    .product-card__thumb {
+        height: 201px;
         width: 100%;
-        height: 100%;
+        transition: 0s !important;
+        overflow: hidden;
+    }
+
+    .product-card__thumb img {
+        max-width: 100%;
+        width: 100%;
+        overflow: hidden;
     }
 </style>
 
@@ -402,7 +410,7 @@
                             </span>
                             <span class="text-md text-gray-500 item-hover__text d-none d-lg-flex">Wishlist</span>
                         </a> --}}
-                        <a href="cart.html" class="flex-align gap-4 item-hover">
+                        <a href="{{ route('cartPage') }}" class="flex-align gap-4 item-hover">
                             <span class="text-2xl text-gray-700 d-flex position-relative me-6 mt-6 item-hover__text">
                                 <i class="ph ph-shopping-cart-simple"></i>
                                 <span
@@ -811,6 +819,8 @@
 
     <!-- main js -->
     <script src="{{ asset('front/assets/js/main.js') }}"></script>
+
+    @stack('script')
 
 
 

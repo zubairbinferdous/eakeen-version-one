@@ -40,8 +40,13 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/', [FrontendController::class, 'homePage'])->name('home');
 Route::get('/shop', [FrontendController::class, 'shop'])->name('shop');
+Route::get('/productPage/{id}', [FrontendController::class, 'productPage'])->name('product.page');
+Route::get('/cartPage', [FrontendController::class, 'cartPage'])->name('cartPage');
+Route::get('/checkout', [FrontendController::class, 'checkout'])->name('checkout');
 
 
+// add to cart 
+Route::post('/add-to-cart', [FrontendController::class, 'addToCart'])->name('checkout');
 
 
 
@@ -49,68 +54,66 @@ Route::get('/shop', [FrontendController::class, 'shop'])->name('shop');
 
 
 // admin-area 
-Route::get('/admin-dashboard', [posController::class, 'adminDashboard'])->name('admin_dashboard');
+Route::get('/admin-dashboard', [posController::class, 'adminDashboard'])->middleware(['auth', 'role:admin'])->name('admin_dashboard');
 
-// bank
-Route::get('/bankData', [BankController::class, 'bank'])->name('bankData');
-Route::post('/newAccount', [BankController::class, 'newAccount'])->name('newAccount');
+Route::middleware(['auth', 'role:admin'])->group(function () {
 
-
-// category-area
-Route::get('/category', [CategoryController::class, 'category'])->name('category');
-Route::post('/categoryAdd', [CategoryController::class, 'categoryDataInsert'])->name('categoryDataInsert');
-Route::get('/categoryData', [CategoryController::class, 'categoryData'])->name('categoryData');
-Route::get('category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
-Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
-Route::get('category/delete/{id}', [CategoryController::class, 'destroy'])->name('category.delete');
+    // bank
+    Route::get('/bankData', [BankController::class, 'bank'])->name('bankData');
+    Route::post('/newAccount', [BankController::class, 'newAccount'])->name('newAccount');
 
 
-//Brand-area
-Route::get('/brand', [BrandController::class, 'brand'])->name('brand');
-Route::post('/brandAdd', [BrandController::class, 'brandDataInsert'])->name('BrandDataInsert');
-Route::get('/brandData', [BrandController::class, 'brandData'])->name('BrandData');
-Route::get('brand/edit/{id}', [BrandController::class, 'brandEdit'])->name('brand.edit');
-Route::post('brand/update/{id}', [BrandController::class, 'brandUpdate'])->name('brand.update');
-Route::get('brand/delete/{id}', [BrandController::class, 'brandDestroy'])->name('brand.delete');
+    // category-area
+    Route::get('/category', [CategoryController::class, 'category'])->name('category');
+    Route::post('/categoryAdd', [CategoryController::class, 'categoryDataInsert'])->name('categoryDataInsert');
+    Route::get('/categoryData', [CategoryController::class, 'categoryData'])->name('categoryData');
+    Route::get('category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
+    Route::get('category/delete/{id}', [CategoryController::class, 'destroy'])->name('category.delete');
 
 
-//subcategory 
-Route::get('/subCategory', [SubCategoryController::class, 'subCategory'])->name('subCategory');
-Route::post('/subCategoryAdd', [SubCategoryController::class, 'subCategoryAdd'])->name('subCategoryAdd');
-Route::get('/subCategoryAll', [SubCategoryController::class, 'subCategoryAll'])->name('subCategoryAll');
-Route::get('subcategory/delete/{id}', [SubCategoryController::class, 'subCateDestroy'])->name('subcategory.delete');
-
-//product-area
-Route::get('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
-Route::post('/productDataSave', [ProductController::class, 'ProductStoreData'])->name('products.store');
-Route::get('/productData', [ProductController::class, 'productData'])->name('productData');
-Route::get('/productDelete/{id}', [ProductController::class, 'productDataDelete'])->name('product.delete');
+    //Brand-area
+    Route::get('/brand', [BrandController::class, 'brand'])->name('brand');
+    Route::post('/brandAdd', [BrandController::class, 'brandDataInsert'])->name('BrandDataInsert');
+    Route::get('/brandData', [BrandController::class, 'brandData'])->name('BrandData');
+    Route::get('brand/edit/{id}', [BrandController::class, 'brandEdit'])->name('brand.edit');
+    Route::post('brand/update/{id}', [BrandController::class, 'brandUpdate'])->name('brand.update');
+    Route::get('brand/delete/{id}', [BrandController::class, 'brandDestroy'])->name('brand.delete');
 
 
-//pos-area
-Route::get('/pos', [posController::class, 'pos'])->name('pos');
+    //subcategory 
+    Route::get('/subCategory', [SubCategoryController::class, 'subCategory'])->name('subCategory');
+    Route::post('/subCategoryAdd', [SubCategoryController::class, 'subCategoryAdd'])->name('subCategoryAdd');
+    Route::get('/subCategoryAll', [SubCategoryController::class, 'subCategoryAll'])->name('subCategoryAll');
+    Route::get('subcategory/delete/{id}', [SubCategoryController::class, 'subCateDestroy'])->name('subcategory.delete');
 
-//owner-area
-Route::get('/owner', [OwnerController::class, 'owner'])->name('owner');
-Route::get('/ownerData', [OwnerController::class, 'ownerData'])->name('ownerData');
-Route::post('/addUser', [OwnerController::class, 'addUser'])->name('addUser');
-Route::get('/deleteUser/{id}', [OwnerController::class, 'deleteUser'])->name('deleteUser');
-
-
-// sales pos 
-Route::get('/sales', [posController::class, 'sales'])->name('sales');
-Route::get('/return', [posController::class, 'return'])->name('return');
-Route::get('/addPurchases', [posController::class, 'addPurchases'])->name('addPurchases');
-Route::get('/addPurchasesData', [posController::class, 'addPurchasesData'])->name('addPurchasesData');
-Route::get('/addDamages', [posController::class, 'addDamages'])->name('addDamages');
-Route::get('/addDamagesData', [posController::class, 'addDamagesData'])->name('addDamagesData');
-Route::get('/confirm', [posController::class, 'confirm'])->name('confirm');
-Route::get('/pending', [posController::class, 'pending'])->name('pending');
+    //product-area
+    Route::get('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
+    Route::post('/productDataSave', [ProductController::class, 'ProductStoreData'])->name('products.store');
+    Route::get('/productData', [ProductController::class, 'productData'])->name('productData');
+    Route::get('/productDelete/{id}', [ProductController::class, 'productDataDelete'])->name('product.delete');
 
 
+    //pos-area
+    Route::get('/pos', [posController::class, 'pos'])->name('pos');
+
+    //owner-area
+    Route::get('/owner', [OwnerController::class, 'owner'])->name('owner');
+    Route::get('/ownerData', [OwnerController::class, 'ownerData'])->name('ownerData');
+    Route::post('/addUser', [OwnerController::class, 'addUser'])->name('addUser');
+    Route::get('/deleteUser/{id}', [OwnerController::class, 'deleteUser'])->name('deleteUser');
 
 
-
+    // sales pos 
+    Route::get('/sales', [posController::class, 'sales'])->name('sales');
+    Route::get('/return', [posController::class, 'return'])->name('return');
+    Route::get('/addPurchases', [posController::class, 'addPurchases'])->name('addPurchases');
+    Route::get('/addPurchasesData', [posController::class, 'addPurchasesData'])->name('addPurchasesData');
+    Route::get('/addDamages', [posController::class, 'addDamages'])->name('addDamages');
+    Route::get('/addDamagesData', [posController::class, 'addDamagesData'])->name('addDamagesData');
+    Route::get('/confirm', [posController::class, 'confirm'])->name('confirm');
+    Route::get('/pending', [posController::class, 'pending'])->name('pending');
+});
 
 
 

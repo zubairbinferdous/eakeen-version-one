@@ -272,16 +272,16 @@
                         @foreach ($Product as $item)
                             <div
                                 class="product-card h-100 p-16 border border-gray-100 hover-border-main-600 rounded-16 position-relative transition-2">
-                                <a href="product-details.html"
+                                <a href="{{ route('product.page', $item->id) }}"
                                     class="product-card__thumb flex-center rounded-8 bg-gray-50 position-relative">
-                                    <img src="{{ $item->ProductImages }}" alt="" class="w-auto max-w-unset">
+                                    <img src="{{ $item->ProductImages }}" alt="" class="">
                                     <span
                                         class="product-card__badge bg-primary-600 px-8 py-4 text-sm text-white position-absolute inset-inline-start-0 inset-block-start-0">Best
                                         Sale </span>
                                 </a>
                                 <div class="product-card__content mt-16">
                                     <h6 class="title text-lg fw-semibold mt-12 mb-8">
-                                        <a href="product-details.html" class="link text-line-2"
+                                        <a href="{{ route('product.page', $item->id) }}" class="link text-line-2"
                                             tabindex="0">{{ $item->product_title }}</a>
                                     </h6>
                                     <div class="flex-align mb-20 mt-16 gap-6">

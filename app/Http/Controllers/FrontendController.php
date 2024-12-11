@@ -24,4 +24,25 @@ class FrontendController extends Controller
         $Product = Product::get();
         return view('frontend.ShopPage', compact('category', 'Product', 'brand'));
     }
+
+
+    public function productPage($id)
+    {
+        $data = Product::findOrFail($id);
+        return view('frontend.ProductShop', compact('data'));
+    }
+    public function cartPage()
+    {
+        return view('frontend.cartPage');
+    }
+
+    public function checkout()
+    {
+        return view('frontend.checkout');
+    }
+
+    public function addToCart()
+    {
+        return 'hello';
+    }
 }
