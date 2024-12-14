@@ -41,13 +41,20 @@ Route::middleware('auth')->group(function () {
 Route::get('/', [FrontendController::class, 'homePage'])->name('home');
 Route::get('/shop', [FrontendController::class, 'shop'])->name('shop');
 Route::get('/productPage/{id}', [FrontendController::class, 'productPage'])->name('product.page');
-Route::get('/cartPage', [FrontendController::class, 'cartPage'])->name('cartPage');
+
+
+
+//check out page 
 Route::get('/checkout', [FrontendController::class, 'checkout'])->name('checkout');
 
 
 // add to cart 
-Route::post('/add-to-cart', [FrontendController::class, 'addToCart'])->name('checkout');
-
+Route::post('/add-to-cart', [FrontendController::class, 'addToCart'])->name('addToCart');
+Route::post('/add-to-cartOne', [FrontendController::class, 'addToCartOne'])->name('addToCartOne');
+Route::get('/cartPage', [FrontendController::class, 'cartPage'])->name('cartPage');
+Route::get('/removeItem{id}', [FrontendController::class, 'removeItem'])->name('removeItem');
+Route::Post('/cart/increment', [FrontendController::class, 'increment'])->name('increment');
+Route::Post('/checkOutNow', [FrontendController::class, 'checkOutNow'])->name('checkOutNow');
 
 
 

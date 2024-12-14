@@ -637,16 +637,55 @@
 @push('script')
     <script>
         $(document).ready(function() {
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+
             $('.shopIngCardProductData').on('submit', function(e) {
                 e.preventDefault();
                 let fromData = $(this).serialize();
-                console.log(fromData);
                 $.ajax({
                     method: 'POST',
                     data: fromData,
-                    url: '',
+                    url: '{{ route('addToCart') }}',
                     success: function(data) {
 
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'bottom-end',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+
+
+                        if ($.isEmptyObject(data.error)) {
+                            console.log('Success Message:', data
+                                .success); // Log success message
+
+                            Toast.fire({
+                                icon: 'success', // Updated to 'icon'
+                                title: data.success,
+                            });
+
+                            if (data.cart_count !== undefined) {
+                                $('#cartCount').text(data.cart_count);
+                            }
+
+                            console.log(data.cart_count)
+
+                        } else {
+                            console.log('Error Message:', data.error); // Log error message
+
+                            Toast.fire({
+                                icon: 'error', // Updated to 'icon'
+                                title: data.error,
+                            });
+                        }
                     },
                     error: function(data) {
 

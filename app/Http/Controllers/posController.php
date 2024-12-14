@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class posController extends Controller
 {
@@ -11,7 +12,8 @@ class posController extends Controller
     public function pos()
     {
         $data = Product::get();
-        return view('admin.pos ', compact('data'));
+        $dataPos = Cart::content();
+        return view('admin.pos ', compact('data', 'dataPos'));
     }
 
 

@@ -284,21 +284,18 @@
                                         <a href="{{ route('product.page', $item->id) }}" class="link text-line-2"
                                             tabindex="0">{{ $item->product_title }}</a>
                                     </h6>
-                                    <div class="flex-align mb-20 mt-16 gap-6">
-                                        <span class="text-xs fw-medium text-gray-500">coin</span>
-                                        <span class="text-15 fw-medium text-warning-600 d-flex"><i
-                                                class="ph-fill ph-star"></i></span>
+                                    <div class="flex-align  mt-16 gap-6">
+                                        <span class="text-xs fw-medium text-gray-500">coin :</span>
                                         <span class="text-xs fw-medium text-gray-500">{{ $item->coin }}</span>
+
                                     </div>
-                                    {{-- <div class="mt-8">
-                                        <div class="progress w-100 bg-color-three rounded-pill h-4" role="progressbar"
-                                            aria-label="Basic example" aria-valuenow="35" aria-valuemin="0"
-                                            aria-valuemax="100">
-                                            <div class="progress-bar bg-main-two-600 rounded-pill" style="width: 35%">
-                                            </div>
-                                        </div>
-                                        <span class="text-gray-900 text-xs fw-medium mt-8">Sold: 18/35</span>
-                                    </div> --}}
+                                    <div class="flex-align gap-6">
+
+                                        <span class="text-gray-900 text-xs fw-medium mt-8">Stock:
+                                            {{ $item->stock }}</span>
+                                    </div>
+
+
 
                                     <div class="product-card__price my-20">
                                         <span class="text-gray-400 text-md fw-semibold text-decoration-line-through">
@@ -307,11 +304,17 @@
                                                 class="text-gray-500 fw-normal">/Qty</span> </span>
                                     </div>
 
-                                    <a href="cart.html"
-                                        class="product-card__cart btn bg-gray-50 text-heading hover-bg-main-600 hover-text-white py-11 px-24 rounded-8 flex-center gap-8 fw-medium"
-                                        tabindex="0">
-                                        Add To Cart <i class="ph ph-shopping-cart"></i>
-                                    </a>
+                                    <form class="shopIngCardProductDataOne">
+
+                                        <input type="hidden" name="productId" value="{{ $item->id }}">
+
+                                        <button href="" type="submit"
+                                            class="product-card__cart btn bg-gray-50 text-heading hover-bg-main-600 hover-text-white py-11 px-24 rounded-8 flex-center gap-8 fw-medium"
+                                            tabindex="0">
+                                            Add To Cart <i class="ph ph-shopping-cart"></i>
+                                        </button>
+                                    </form>
+
                                 </div>
                             </div>
                         @endforeach
@@ -398,182 +401,74 @@
                                 </a>
                             </div>
                         </div>
-                        <div
-                            class="product-card h-100 p-16 border border-gray-100 hover-border-main-600 rounded-16 position-relative transition-2">
-                            <a href="product-details.html"
-                                class="product-card__thumb flex-center rounded-8 bg-gray-50 position-relative">
-                                <span
-                                    class="product-card__badge bg-danger-600 px-8 py-4 text-sm text-white position-absolute inset-inline-start-0 inset-block-start-0">Sale
-                                    50% </span>
-                                <img src="assets/images/thumbs/product-two-img4.png" alt=""
-                                    class="w-auto max-w-unset">
-                            </a>
-                            <div class="product-card__content mt-16">
-                                <h6 class="title text-lg fw-semibold mt-12 mb-8">
-                                    <a href="product-details.html" class="link text-line-2" tabindex="0">Taylor Farms
-                                        Broccoli Florets Vegetables</a>
-                                </h6>
-                                <div class="flex-align mb-20 mt-16 gap-6">
-                                    <span class="text-xs fw-medium text-gray-500">4.8</span>
-                                    <span class="text-15 fw-medium text-warning-600 d-flex"><i
-                                            class="ph-fill ph-star"></i></span>
-                                    <span class="text-xs fw-medium text-gray-500">(17k)</span>
-                                </div>
-                                <div class="mt-8">
-                                    <div class="progress w-100 bg-color-three rounded-pill h-4" role="progressbar"
-                                        aria-label="Basic example" aria-valuenow="35" aria-valuemin="0"
-                                        aria-valuemax="100">
-                                        <div class="progress-bar bg-main-two-600 rounded-pill" style="width: 35%"></div>
-                                    </div>
-                                    <span class="text-gray-900 text-xs fw-medium mt-8">Sold: 18/35</span>
-                                </div>
 
-                                <div class="product-card__price my-20">
-                                    <span class="text-gray-400 text-md fw-semibold text-decoration-line-through">
-                                        $28.99</span>
-                                    <span class="text-heading text-md fw-semibold ">$14.99 <span
-                                            class="text-gray-500 fw-normal">/Qty</span> </span>
-                                </div>
 
-                                <a href="cart.html"
-                                    class="product-card__cart btn bg-gray-50 text-heading hover-bg-main-600 hover-text-white py-11 px-24 rounded-8 flex-center gap-8 fw-medium"
-                                    tabindex="0">
-                                    Add To Cart <i class="ph ph-shopping-cart"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div
-                            class="product-card h-100 p-16 border border-gray-100 hover-border-main-600 rounded-16 position-relative transition-2">
-                            <a href="product-details.html"
-                                class="product-card__thumb flex-center rounded-8 bg-gray-50 position-relative">
-                                <img src="assets/images/thumbs/product-two-img5.png" alt=""
-                                    class="w-auto max-w-unset">
-                            </a>
-                            <div class="product-card__content mt-16">
-                                <h6 class="title text-lg fw-semibold mt-12 mb-8">
-                                    <a href="product-details.html" class="link text-line-2" tabindex="0">Taylor Farms
-                                        Broccoli Florets Vegetables</a>
-                                </h6>
-                                <div class="flex-align mb-20 mt-16 gap-6">
-                                    <span class="text-xs fw-medium text-gray-500">4.8</span>
-                                    <span class="text-15 fw-medium text-warning-600 d-flex"><i
-                                            class="ph-fill ph-star"></i></span>
-                                    <span class="text-xs fw-medium text-gray-500">(17k)</span>
-                                </div>
-                                <div class="mt-8">
-                                    <div class="progress w-100 bg-color-three rounded-pill h-4" role="progressbar"
-                                        aria-label="Basic example" aria-valuenow="35" aria-valuemin="0"
-                                        aria-valuemax="100">
-                                        <div class="progress-bar bg-main-two-600 rounded-pill" style="width: 35%"></div>
-                                    </div>
-                                    <span class="text-gray-900 text-xs fw-medium mt-8">Sold: 18/35</span>
-                                </div>
-
-                                <div class="product-card__price my-20">
-                                    <span class="text-gray-400 text-md fw-semibold text-decoration-line-through">
-                                        $28.99</span>
-                                    <span class="text-heading text-md fw-semibold ">$14.99 <span
-                                            class="text-gray-500 fw-normal">/Qty</span> </span>
-                                </div>
-
-                                <a href="cart.html"
-                                    class="product-card__cart btn bg-gray-50 text-heading hover-bg-main-600 hover-text-white py-11 px-24 rounded-8 flex-center gap-8 fw-medium"
-                                    tabindex="0">
-                                    Add To Cart <i class="ph ph-shopping-cart"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div
-                            class="product-card h-100 p-16 border border-gray-100 hover-border-main-600 rounded-16 position-relative transition-2">
-                            <a href="product-details.html"
-                                class="product-card__thumb flex-center rounded-8 bg-gray-50 position-relative">
-                                <img src="assets/images/thumbs/product-two-img6.png" alt=""
-                                    class="w-auto max-w-unset">
-                            </a>
-                            <div class="product-card__content mt-16">
-                                <h6 class="title text-lg fw-semibold mt-12 mb-8">
-                                    <a href="product-details.html" class="link text-line-2" tabindex="0">Taylor Farms
-                                        Broccoli Florets Vegetables</a>
-                                </h6>
-                                <div class="flex-align mb-20 mt-16 gap-6">
-                                    <span class="text-xs fw-medium text-gray-500">4.8</span>
-                                    <span class="text-15 fw-medium text-warning-600 d-flex"><i
-                                            class="ph-fill ph-star"></i></span>
-                                    <span class="text-xs fw-medium text-gray-500">(17k)</span>
-                                </div>
-                                <div class="mt-8">
-                                    <div class="progress w-100 bg-color-three rounded-pill h-4" role="progressbar"
-                                        aria-label="Basic example" aria-valuenow="35" aria-valuemin="0"
-                                        aria-valuemax="100">
-                                        <div class="progress-bar bg-main-two-600 rounded-pill" style="width: 35%"></div>
-                                    </div>
-                                    <span class="text-gray-900 text-xs fw-medium mt-8">Sold: 18/35</span>
-                                </div>
-
-                                <div class="product-card__price my-20">
-                                    <span class="text-gray-400 text-md fw-semibold text-decoration-line-through">
-                                        $28.99</span>
-                                    <span class="text-heading text-md fw-semibold ">$14.99 <span
-                                            class="text-gray-500 fw-normal">/Qty</span> </span>
-                                </div>
-
-                                <a href="cart.html"
-                                    class="product-card__cart btn bg-gray-50 text-heading hover-bg-main-600 hover-text-white py-11 px-24 rounded-8 flex-center gap-8 fw-medium"
-                                    tabindex="0">
-                                    Add To Cart <i class="ph ph-shopping-cart"></i>
-                                </a>
-                            </div>
-
-                        </div>
-
-                        <!-- Pagination Start -->
-                        {{-- <ul class="pagination flex-center flex-wrap gap-16">
-                            <li class="page-item">
-                                <a class="page-link h-64 w-64 flex-center text-xxl rounded-8 fw-medium text-neutral-600 border border-gray-100"
-                                    href="#">
-                                    <i class="ph-bold ph-arrow-left"></i>
-                                </a>
-                            </li>
-                            <li class="page-item active">
-                                <a class="page-link h-64 w-64 flex-center text-md rounded-8 fw-medium text-neutral-600 border border-gray-100"
-                                    href="#">01</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link h-64 w-64 flex-center text-md rounded-8 fw-medium text-neutral-600 border border-gray-100"
-                                    href="#">02</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link h-64 w-64 flex-center text-md rounded-8 fw-medium text-neutral-600 border border-gray-100"
-                                    href="#">03</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link h-64 w-64 flex-center text-md rounded-8 fw-medium text-neutral-600 border border-gray-100"
-                                    href="#">04</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link h-64 w-64 flex-center text-md rounded-8 fw-medium text-neutral-600 border border-gray-100"
-                                    href="#">05</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link h-64 w-64 flex-center text-md rounded-8 fw-medium text-neutral-600 border border-gray-100"
-                                    href="#">06</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link h-64 w-64 flex-center text-md rounded-8 fw-medium text-neutral-600 border border-gray-100"
-                                    href="#">07</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link h-64 w-64 flex-center text-xxl rounded-8 fw-medium text-neutral-600 border border-gray-100"
-                                    href="#">
-                                    <i class="ph-bold ph-arrow-right"></i>
-                                </a>
-                            </li>
-                        </ul> --}}
-                        <!-- Pagination End -->
                     </div>
-                    <!-- Content End -->
+
 
                 </div>
             </div>
     </section>
 @endsection
+
+
+@push('script')
+    <script>
+        $(document).ready(function() {
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+
+            $('.shopIngCardProductDataOne').on('submit', function(e) {
+                e.preventDefault();
+                let fromData = $(this).serialize();
+                $.ajax({
+                    method: 'POST',
+                    data: fromData,
+                    url: '{{ route('addToCartOne') }}',
+                    success: function(data) {
+
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'bottom-end',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+
+
+                        if ($.isEmptyObject(data.error)) {
+                            console.log('Success Message:', data
+                                .success); // Log success message
+
+                            Toast.fire({
+                                icon: 'success', // Updated to 'icon'
+                                title: data.success,
+                            });
+
+
+                            if (data.cart_count !== undefined) {
+                                $('#cartCount').text(data.cart_count);
+                            }
+
+                        } else {
+                            console.log('Error Message:', data.error); // Log error message
+
+                            Toast.fire({
+                                icon: 'error', // Updated to 'icon'
+                                title: data.error,
+                            });
+                        }
+                    },
+                    error: function(data) {
+
+                    }
+                })
+            });
+        });
+    </script>
+@endpush

@@ -62,7 +62,7 @@
                         <a href="{{ route('dashboard') }}" class="sidebar-option active-option">
                             <i class="bi bi-grid"></i> Dashboard
                         </a>
-                        <a href="#" class="sidebar-option">
+                        <a href="" class="sidebar-option">
                             <i class="bi bi-people"></i> Affiliate
                         </a>
                         <a href="#" class="sidebar-option">
@@ -91,107 +91,99 @@
 
             <!-- Statistics and Details -->
             <div class="col-lg-9 mtb100">
-                {{-- <div class="row g-3">
-                    <!-- Stats Boxes -->
-                    <div class="col-md-2">
-                        <div class="icon-box">
-                            <i class="bi bi-bag"></i>
-                            <p>Total Order</p>
-                            <h5>0</h5>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="icon-box">
-                            <i class="bi bi-heart"></i>
-                            <p>My Wishlist</p>
-                            <h5>0</h5>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="icon-box">
-                            <i class="bi bi-arrow-repeat"></i>
-                            <p>Refund Success</p>
-                            <h5>0</h5>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="icon-box">
-                            <i class="bi bi-cart"></i>
-                            <p>Product in Cart</p>
-                            <h5>0</h5>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="icon-box">
-                            <i class="bi bi-tag"></i>
-                            <p>Coupon Used</p>
-                            <h5>0</h5>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="icon-box">
-                            <i class="bi bi-check-circle"></i>
-                            <p>Completed Order</p>
-                            <h5>0</h5>
-                        </div>
-                    </div>
-                </div> --}}
+                <div class="row profile-card">
 
-                <!-- Details Sections -->
-                {{-- <div class="row g-3 mt-4">
-                    <div class="col-lg-6">
-                        <div class="profile-card">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h6>Purchase History</h6>
-                                <a href="#" class="btn btn-sm btn-link">See All</a>
+                    <div class="col-xl-9 col-lg-8">
+
+                        <div class="row gy-3">
+                            <div class="col-sm-12">
+                                <input type="text" class="common-input border-gray-100" placeholder="Name" name="name"
+                                    required>
                             </div>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Details</th>
-                                        <th>Amount</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td colspan="3" class="text-center text-muted">No Data</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+
+                            <div class="col-12">
+                                <input type="number" class="common-input border-gray-100" placeholder="Phone"
+                                    name="phone" required>
+                            </div>
+
+                            <div class="col-12">
+                                <input type="email" class="common-input border-gray-100" placeholder="Email Address"
+                                    name="email" required>
+                            </div>
+
+                            <div class="col-12">
+                                <input type="text" class="common-input border-gray-100" placeholder="City" name="city"
+                                    required>
+                            </div>
+
+                            <div class="col-12">
+                                <input type="text" class="common-input border-gray-100" placeholder="Post Code"
+                                    name="PostCode" required>
+                            </div>
+
+                            <div class="col-12">
+                                <textarea name="Address" class="common-input" id="" cols="30" rows="10" placeholder="Address"
+                                    required></textarea>
+                            </div>
+
+                            {{-- <input type="hidden" value="{{ Cart::subtotal() }}" name="subTotal"> --}}
+
                         </div>
+
+                        <button type="submit" class="btn btn-main mt-40 py-18 w-100 rounded-8 mt-56"> Apply for Affiliate
+                        </button>
+
                     </div>
 
-                    <div class="col-lg-6">
-                        <div class="profile-card">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h6>My Wishlist</h6>
-                                <a href="#" class="btn btn-sm btn-link">See All</a>
+                    <div class="col-xl-3 col-lg-4">
+                        <div class="checkout-sidebar">
+                            <div class="bg-color-three rounded-8 p-24 text-center">
+                                <span class="text-gray-900 text-xl fw-semibold">Your Coin</span>
                             </div>
-                            <p class="text-center text-muted">No Data</p>
+
+                            <div class="border border-gray-100 rounded-8 px-24 py-40 mt-24">
+                                <div class="mb-32 pb-32 border-bottom border-gray-100 flex-between gap-8">
+                                    <span class="text-gray-900 fw-medium text-xl font-heading-two">coin : </span>
+                                    <span class="text-gray-900 fw-medium text-xl font-heading-two">000</span>
+                                </div>
+
+
+
+                            </div>
+
+                            <div class="mt-32">
+
+                                <div class="payment-item">
+                                    {{-- <div class="form-check common-check common-radio py-16 mb-0">
+                                        <input class="form-check-input" type="radio" name="payment" id="payment3"
+                                            required>
+                                        <label class="form-check-label fw-semibold text-neutral-600" for="payment3">Cash
+                                            on
+                                            delivery</label>
+                                    </div> --}}
+                                    {{-- <div class="payment-item__content px-16 py-24 rounded-8 bg-main-50 position-relative">
+                                        <p class="text-gray-800">Make your payment directly into our bank account. Please use
+                                            your Order ID as the payment reference. Your order will not be shipped until the
+                                            funds have cleared in our account.</p>
+                                    </div> --}}
+                                </div>
+                            </div>
+
+                            {{-- <div class="mt-32 pt-32 border-top border-gray-100">
+                                <p class="text-gray-500">Your personal data will be used to process your order, support your
+                                    experience throughout this website, and for other purposes described in our <a
+                                        href="#" class="text-main-600 text-decoration-underline"> privacy policy</a> .
+                                </p>
+                            </div> --}}
+
+
+
                         </div>
                     </div>
 
-                    <div class="col-lg-6">
-                        <div class="profile-card">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h6>Recent Order</h6>
-                                <a href="#" class="btn btn-sm btn-link">See All</a>
-                            </div>
-                            <p class="text-center text-muted">No Data</p>
-                        </div>
-                    </div>
 
-                    <div class="col-lg-6">
-                        <div class="profile-card">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h6>Product in Cart</h6>
-                                <a href="#" class="btn btn-sm btn-link">See All</a>
-                            </div>
-                            <p class="text-center text-muted">No Data</p>
-                        </div>
-                    </div>
-                </div> --}}
+
+                </div>
             </div>
         </div>
     </div>

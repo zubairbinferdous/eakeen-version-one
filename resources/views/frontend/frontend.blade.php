@@ -9,7 +9,7 @@
     <title>Eakeen</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/images/logo/favicon.png">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{{ asset('front/assets/css/bootstrap.min.css') }}">
     <!-- select 2 -->
@@ -59,6 +59,18 @@
         max-width: 100%;
         width: 100%;
         overflow: hidden;
+    }
+
+    .end-n46 {
+        inset-inline-end: -14px;
+    }
+
+    .top-n66 {
+        inset-block-start: -25px;
+    }
+
+    .mt-50 {
+        margin-top: 40px !important;
     }
 </style>
 
@@ -196,16 +208,7 @@
     <div class="header-top bg-main-600 flex-between">
         <div class="container container-lg">
             <div class=" gap-8">
-                {{-- <ul class="flex-align  flex-wrap d-none d-md-flex">
-                    <li class="border-right-item"><a href="#shipping"
-                            class="text-white text-sm hover-text-decoration-underline">Become A Seller</a></li>
-                    <li class="border-right-item"><a href="#shipping"
-                            class="text-white text-sm hover-text-decoration-underline">About us</a></li>
-                    <li class="border-right-item"><a href="#shipping"
-                            class="text-white text-sm hover-text-decoration-underline">Free Delivery</a></li>
-                    <li class="border-right-item"><a href="#shipping"
-                            class="text-white text-sm hover-text-decoration-underline">Returns Policy</a></li>
-                </ul> --}}
+
                 <ul class="header-top__right flex-align flex-wrap">
                     <li class="on-hover-item border-right-item border-right-item-sm-space has-submenu arrow-white">
                         <a href="javascript:void(0)" class="text-white text-sm py-8">Help Center</a>
@@ -227,114 +230,7 @@
                             </li>
                         </ul>
                     </li>
-                    {{-- <li class="on-hover-item border-right-item border-right-item-sm-space has-submenu arrow-white">
-                        <a href="javascript:void(0)" class="selected-text text-white text-sm py-8">Eng</a>
-                        <ul
-                            class="selectable-text-list on-hover-dropdown common-dropdown common-dropdown--sm max-h-200 scroll-sm px-0 py-8">
-                            <li>
-                                <a href="javascript:void(0)"
-                                    class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0">
-                                    <img src="assets/images/thumbs/flag1.png" alt=""
-                                        class="w-16 h-12 rounded-4 border border-gray-100">
-                                    English
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)"
-                                    class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0">
-                                    <img src="assets/images/thumbs/flag2.png" alt=""
-                                        class="w-16 h-12 rounded-4 border border-gray-100">
-                                    Japan
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)"
-                                    class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0">
-                                    <img src="assets/images/thumbs/flag3.png" alt=""
-                                        class="w-16 h-12 rounded-4 border border-gray-100">
-                                    French
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)"
-                                    class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0">
-                                    <img src="assets/images/thumbs/flag4.png" alt=""
-                                        class="w-16 h-12 rounded-4 border border-gray-100">
-                                    Germany
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)"
-                                    class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0">
-                                    <img src="assets/images/thumbs/flag6.png" alt=""
-                                        class="w-16 h-12 rounded-4 border border-gray-100">
-                                    Bangladesh
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)"
-                                    class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0">
-                                    <img src="assets/images/thumbs/flag5.png" alt=""
-                                        class="w-16 h-12 rounded-4 border border-gray-100">
-                                    South Korea
-                                </a>
-                            </li>
-                        </ul>
-                    </li> --}}
-                    {{-- <li class="on-hover-item border-right-item border-right-item-sm-space has-submenu arrow-white">
-                        <a href="javascript:void(0)" class="selected-text text-white text-sm py-8">USD</a>
-                        <ul
-                            class="selectable-text-list on-hover-dropdown common-dropdown common-dropdown--sm max-h-200 scroll-sm px-0 py-8">
-                            <li>
-                                <a href="javascript:void(0)"
-                                    class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0">
-                                    <img src="assets/images/thumbs/flag1.png" alt=""
-                                        class="w-16 h-12 rounded-4 border border-gray-100">
-                                    USD
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)"
-                                    class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0">
-                                    <img src="assets/images/thumbs/flag2.png" alt=""
-                                        class="w-16 h-12 rounded-4 border border-gray-100">
-                                    Yen
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)"
-                                    class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0">
-                                    <img src="assets/images/thumbs/flag3.png" alt=""
-                                        class="w-16 h-12 rounded-4 border border-gray-100">
-                                    Franc
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)"
-                                    class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0">
-                                    <img src="assets/images/thumbs/flag4.png" alt=""
-                                        class="w-16 h-12 rounded-4 border border-gray-100">
-                                    EURO
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)"
-                                    class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0">
-                                    <img src="assets/images/thumbs/flag6.png" alt=""
-                                        class="w-16 h-12 rounded-4 border border-gray-100">
-                                    BDT
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)"
-                                    class="hover-bg-gray-100 text-gray-500 text-xs py-6 px-16 flex-align gap-8 rounded-0">
-                                    <img src="assets/images/thumbs/flag5.png" alt=""
-                                        class="w-16 h-12 rounded-4 border border-gray-100">
-                                    WON
-                                </a>
-                            </li>
-                        </ul>
-                    </li> --}}
+
                     <li class="border-right-item">
                         <a href="{{ route('register') }}" class="text-white text-sm py-8 flex-align gap-6">
                             <span class="icon text-md d-flex"> <i class="ph ph-user-circle"></i> </span>
@@ -414,7 +310,8 @@
                             <span class="text-2xl text-gray-700 d-flex position-relative me-6 mt-6 item-hover__text">
                                 <i class="ph ph-shopping-cart-simple"></i>
                                 <span
-                                    class="w-16 h-16 flex-center rounded-circle bg-main-600 text-white text-xs position-absolute top-n6 end-n4">2</span>
+                                    class="w-30 h-30 flex-center rounded-circle bg-main-600 text-white text-xs position-absolute top-n66 end-n46"
+                                    id="cartCount">{{ Cart::count() }}</span>
                             </span>
                             <span class="text-md text-gray-500 item-hover__text d-none d-lg-flex">Cart</span>
                         </a>
@@ -816,11 +713,38 @@
     <script src="{{ asset('front/assets/js/count-down.js') }}"></script>
     <!-- wow js -->
     <script src="{{ asset('front/assets/js/jquery-ui.js') }}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        @if (Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}"
+            switch (type) {
+                case 'info':
+                    toastr.info(" {{ Session::get('message') }} ");
+                    break;
+
+                case 'success':
+                    toastr.success(" {{ Session::get('message') }} ");
+                    break;
+
+                case 'warning':
+                    toastr.warning(" {{ Session::get('message') }} ");
+                    break;
+
+                case 'error':
+                    toastr.error(" {{ Session::get('message') }} ");
+                    break;
+            }
+        @endif
+    </script>
 
     <!-- main js -->
     <script src="{{ asset('front/assets/js/main.js') }}"></script>
 
     @stack('script')
+
+
 
 
 
