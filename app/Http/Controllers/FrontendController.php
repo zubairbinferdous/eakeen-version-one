@@ -176,6 +176,10 @@ class FrontendController extends Controller
         Cart::destroy();
 
 
+
+
+
+
         if (auth()->check() && auth()->user()->role === 'admin') {
             return redirect()->route('pos')->with('success', 'Order submitted successfully');
         } else {
