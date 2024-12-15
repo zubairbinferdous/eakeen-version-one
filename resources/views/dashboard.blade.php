@@ -65,10 +65,10 @@
                         <a href="" class="sidebar-option">
                             <i class="bi bi-people"></i> Affiliate
                         </a>
-                        <a href="#" class="sidebar-option">
+                        <a href="{{ route('UserOrder') }}" class="sidebar-option">
                             <i class="bi bi-bag-check"></i> My Order
                         </a>
-                        <a href="#" class="sidebar-option">
+                        {{-- <a href="#" class="sidebar-option">
                             <i class="bi bi-chat-left-text"></i> Support Ticket
                         </a>
                         <a href="#" class="sidebar-option">
@@ -77,7 +77,7 @@
                         <hr>
                         <a href="#" class="sidebar-option">
                             <i class="bi bi-bell"></i> Notification
-                        </a>
+                        </a> --}}
 
                     </nav>
                     <form action="{{ route('logout') }}" method="POST" class="ml100">

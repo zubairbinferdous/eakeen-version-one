@@ -137,6 +137,9 @@ class FrontendController extends Controller
 
     public function checkOutNow(Request $request)
     {
+
+        if ($request->paymentType) {
+        }
         // dd($request->all());
         $cartTotal = $request->subTotal;
         $order_number = 'ORN' . mt_rand(10000000, 99999999);
@@ -146,7 +149,7 @@ class FrontendController extends Controller
             'phone' => $request->phone,
             'email' => $request->email,
             'payment_method' => 'Cash On Delivery',
-            'payment_type' => 'online',
+            'payment_type' =>  $request->paymentType ? 'pos' : 'online',
             'city' => $request->city,
             'post_code' => $request->PostCode,
             'address' => $request->Address,
@@ -174,10 +177,6 @@ class FrontendController extends Controller
         }
 
         Cart::destroy();
-
-
-
-
 
 
         if (auth()->check() && auth()->user()->role === 'admin') {

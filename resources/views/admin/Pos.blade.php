@@ -6,6 +6,15 @@
             width: 164px;
             /* border-radius: 50%; */
         }
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
     </style>
     <div class="content">
 
@@ -74,57 +83,8 @@
                                     </thead>
                                     <!-- HEAD end -->
                                     <!-- BODY start -->
-                                    <tbody class="bg-white">
-
-                                        @foreach ($dataPos as $item)
-                                            <tr class="hover:bg-gray-50 transition-all duration-200">
-
-                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                    <div class="text-sm leading-5 text-gray-900">
-                                                        {{ $item->name }}
-                                                    </div>
-                                                </td>
-
-                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                    <div class="flex items-center justify-start space-x-2 rounded-md">
-                                                        <button type="button"
-                                                            class="productDecrement quantity__minus border border-gray-200 rounded-full p-2 hover:bg-main-600 hover:text-white transition-colors">
-                                                            <i class="ph ph-minus"></i>
-                                                        </button>
-
-                                                        <input type="number"
-                                                            class="quantity__input border border-gray-200 text-center w-20 px-3 rounded-md"
-                                                            value="{{ $item->qty }}" data-rowid={{ $item->rowId }}
-                                                            min="1" id="qtyValue">
-
-                                                        <button type="button"
-                                                            class="productIncrement quantity__plus border border-gray-200 rounded-full p-2 hover:bg-main-600 hover:text-white transition-colors">
-                                                            <i class="ph ph-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-
-                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                    <span
-                                                        class="text-lg font-semibold text-gray-900">{{ $item->price }}</span>
-                                                </td>
-
-                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                    <span
-                                                        class="text-lg font-semibold text-gray-900">{{ $item->price * $item->qty }}</span>
-                                                </td>
-
-                                                <td class="px-6 py-4 whitespace-no-wrap">
-                                                    <a href="{{ route('removeItem', $item->rowId) }}" class="">
-
-                                                        <span class="font-medium">Remove</span>
-                                                    </a>
-                                                </td>
-
-
-                                            </tr>
-                                        @endforeach
-
+                                    <tbody class="bg-white" id="cart-items">
+                                        <!-- The rows will be dynamically inserted here -->
                                     </tbody>
 
                                     <!-- BODY end -->
@@ -162,7 +122,7 @@
                                             <label for="name"
                                                 class="block text-sm font-medium text-gray-700">Amount</label>
                                             <input type="text" id="name" name="amount"
-                                                class="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                                                class="mt-1 block w-full border border-gray-300 rounded-md p-2 subtotal"
                                                 placeholder="Enter your name" readonly value="{{ Cart::subtotal() }}">
                                         </div>
                                         <div>
@@ -203,13 +163,15 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <input type="hidden" class="common-input border-gray-100"
-                                            placeholder="Post Code" name="PostCode" required value="00000">
+                                        <input type="hidden" class="common-input border-gray-100" placeholder="Post Code"
+                                            name="PostCode" required value="00000">
                                     </div>
 
-                                    <input type="hidden" value="{{ Cart::subtotal() }}" name="subTotal">|
+                                    <input type="hidden" value="{{ Cart::subtotal() }}" name="subTotal">
 
                                     <input type="hidden" value="pos" name="posData">
+
+                                    <input type="hidden" value="pos" name="paymentType">
 
                                     <!-- Modal Buttons -->
                                     <div class="flex justify-end space-x-2 mt-4">
@@ -277,9 +239,10 @@
                                             <input type="hidden" name="productId" value="{{ $item->id }}">
 
                                             <button type="submit"
-                                                class="product-card__cart btn bg-green-500 text-white hover:bg-green-600 hover:text-black py-2 px-4 rounded-md flex items-center gap-2 text-sm font-medium">
-                                                Add <i class="ph ph-shopping-cart"></i>
+                                                class="px-3 py-2 text-xs font-medium text-center text-white bg-black rounded-lg hover:bg-black focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-black dark:hover:bg-black dark:focus:ring-gray-800">
+                                                Add item
                                             </button>
+
 
                                         </form>
                                     </div>
@@ -321,25 +284,22 @@
             modal.classList.add('hidden');
         }
 
-
         $(document).ready(function() {
-
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
 
-
+            // Add to cart on submit
             $('.shopIngCardProductDataOne').on('submit', function(e) {
-                // e.preventDefault();
+                e.preventDefault();
                 let fromData = $(this).serialize();
                 $.ajax({
                     method: 'POST',
                     data: fromData,
-                    url: '{{ route('addToCartOne') }}',
+                    url: '{{ route('addToCartOnePos') }}',
                     success: function(data) {
-
                         const Toast = Swal.mixin({
                             toast: true,
                             position: 'bottom-end',
@@ -348,191 +308,348 @@
                             timer: 2000
                         });
 
-
                         if ($.isEmptyObject(data.error)) {
-                            console.log('Success Message:', data
-                                .success); // Log success message
+                            console.log('Success Message:', data.success, data
+                                .dataItem); // Log success message
 
                             Toast.fire({
-                                icon: 'success', // Updated to 'icon'
+                                icon: 'success',
                                 title: data.success,
                             });
 
                             if (data.cart_count !== undefined) {
-                                $('#cartCount').text(data.cart_count);
+                                $('#cartCount').text(data.cart_count); // Update cart count
                             }
 
-                            console.log(data.cart_count)
 
+
+
+                            let items = data.dataItem; // Use dataItem from the response
+                            console.log(items)
+
+                            if (typeof items === 'object') {
+                                let productArea = $('#cart-items');
+                                productArea.empty(); // Clear the current cart items
+
+                                if ($.isEmptyObject(items)) {
+                                    productArea.append(
+                                        '<tr><td colspan="5" class="text-center">Your cart is empty.</td></tr>'
+                                    );
+                                } else {
+
+
+
+                                    // Loop through the object using Object.keys()
+                                    Object.keys(items).forEach(function(key) {
+                                        let item = items[
+                                            key]; // Access the item by its key (ID)
+                                        productArea.append(`
+                                    <tr class="hover:bg-gray-50 transition-all duration-200">
+                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                            <div class="text-sm leading-5 text-gray-900">${item.name}</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                            <div class="flex items-center justify-start space-x-2 rounded-md">
+                                                <button type="button" class="productDecrement quantity__minus border border-gray-200 rounded-full p-2 hover:bg-main-600 hover:text-white transition-colors">
+                                                    <i class="ph ph-minus">-</i>
+                                                </button>
+
+                                                <input type="number" readonly class="quantity__input border border-gray-200 text-center w-20 px-3 rounded-md" value="${item.qty}" data-rowid="${item.rowId}" min="1" id="qtyValue">
+
+                                                <button type="button" class="productIncrement quantity__plus border border-gray-200 rounded-full p-2 hover:bg-main-600 hover:text-white transition-colors">
+                                                    <i class="ph ph-plus">+</i>
+                                                </button>
+                                            </div>
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                            <span class="text-lg font-semibold text-gray-900">${item.price}</span>
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                            <span class="text-lg font-semibold text-gray-900" id="${item.rowId}">${item.subtotal}</span>
+                                        </td>
+
+                                      <td class="px-6 py-4 whitespace-no-wrap border-b">
+                                     <a href="" class="">
+                                     <span class="font-medium">Remove</span>
+                                       </a>   
+                                      </td>
+
+                                    </tr>  
+                                `);
+
+                                        $('#cartCount').text(data.cart_count);
+                                        $('#' + item.rowId).text(data.totalPrice);
+                                        $('.subtotal').val(data.subTotal);
+
+                                    });
+                                }
+                            } else {
+                                console.log('Items is not an object:', items);
+                            }
                         } else {
                             console.log('Error Message:', data.error); // Log error message
 
                             Toast.fire({
-                                icon: 'error', // Updated to 'icon'
+                                icon: 'error',
                                 title: data.error,
                             });
                         }
                     },
                     error: function(data) {
-
+                        // Handle error
                     }
-                })
+                });
+            });
+
+            // Event delegation for Increment and Decrement buttons
+            $(document).on('click', '.productIncrement', function() {
+                let input = $(this).siblings('#qtyValue');
+                let rowId = input.data('rowid');
+                let value = parseInt(input.val(), 10) + 1;
+                input.val(value);
+
+                $.ajax({
+                    url: "{{ route('increment') }}",
+                    method: 'POST',
+                    data: {
+                        quantity: value,
+                        rowId: rowId
+                    },
+                    success: function(data) {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'bottom-end',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+
+                        if ($.isEmptyObject(data.error)) {
+                            Toast.fire({
+                                icon: 'success',
+                                title: data.success
+                            });
+                            $('#cartCount').text(data.cart_count); // Update cart count
+                            $('#' + rowId).text(data
+                                .totalPrice); // Update total price for the item
+                            $('.subtotal').val(data.subTotal); // Update subtotal
+                        } else {
+                            Toast.fire({
+                                icon: 'error',
+                                title: data.error
+                            });
+                        }
+                    },
+                    error: function(data) {
+                        // Handle error
+                    }
+                });
+            });
+
+            // Event delegation for Decrement button
+            $(document).on('click', '.productDecrement', function() {
+                let input = $(this).siblings('#qtyValue');
+                let rowId = input.data('rowid');
+                let value = parseInt(input.val(), 10) - 1;
+                if (value < 1) value = 1; // Prevent going below 1
+                input.val(value);
+
+                $.ajax({
+                    url: "{{ route('increment') }}",
+                    method: 'POST',
+                    data: {
+                        quantity: value,
+                        rowId: rowId
+                    },
+                    success: function(data) {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'bottom-end',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+
+                        if ($.isEmptyObject(data.error)) {
+                            Toast.fire({
+                                icon: 'success',
+                                title: data.success
+                            });
+                            $('#cartCount').text(data.cart_count);
+                            $('#' + rowId).text(data.totalPrice);
+                            $('.subtotal').val(data.subTotal);
+                        } else {
+                            Toast.fire({
+                                icon: 'error',
+                                title: data.error
+                            });
+                        }
+                    },
+                    error: function(data) {
+                        // Handle error
+                    }
+                });
             });
         });
 
 
-        $(document).ready(function() {
-            $('.productIncrement').on('click', function() {
-
-                let input = $(this).siblings('#qtyValue');
-                let rowId = input.data('rowid');
-                let value = 0;
-
-                if (input === 'string') {
-                    let value = parseInt(input.val());
-                } else {
-                    value = input.val();
-                }
-                input.val(value)
 
 
 
-                $.ajax({
-                    url: "{{ route('increment') }}",
-                    method: 'POST',
-                    data: {
-                        quantity: value,
-                        rowId: rowId
-                    },
-                    success: function(data) {
+        // $(document).ready(function() {
+        //     $('.productIncrement').on('click', function() {
 
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'bottom-end',
-                            icon: 'success',
-                            showConfirmButton: false,
-                            timer: 2000
-                        });
+        //         let input = $(this).siblings('#qtyValue');
+        //         let rowId = input.data('rowid'); // Extract rowId
+        //         let value = 0;
 
-                        if ($.isEmptyObject(data.error)) {
-                            console.log('Success Message:', data
-                                .success); // Log success message
+        //         // Parse the current value as an integer
+        //         let item = parseInt(input.val(), 10);
 
-                            Toast.fire({
-                                icon: 'success', // Updated to 'icon'
-                                title: data.success,
-                            });
+        //         // Increment the value
+        //         value = isNaN(item) ? 1 : item + 1;
 
-                            if (data.cart_count !== undefined) {
-                                $('#cartCount').text(data.cart_count);
-                            }
+        //         // Set the new value back to the input
+        //         input.val(value);
 
-                            let ProductId = '#' + rowId;
-                            $(ProductId).text(data.totalPrice);
+        //         $.ajax({
+        //             url: "{{ route('increment') }}",
+        //             method: 'POST',
+        //             data: {
+        //                 quantity: value,
+        //                 rowId: rowId
+        //             },
+        //             success: function(data) {
 
-                            $('.subtotal').text(data.subTotal)
+        //                 const Toast = Swal.mixin({
+        //                     toast: true,
+        //                     position: 'bottom-end',
+        //                     icon: 'success',
+        //                     showConfirmButton: false,
+        //                     timer: 2000
+        //                 });
 
-                        } else {
-                            console.log('Error Message:', data.error); // Log error message
+        //                 if ($.isEmptyObject(data.error)) {
+        //                     console.log('Success Message:', data
+        //                         .success); // Log success message
 
-                            Toast.fire({
-                                icon: 'error', // Updated to 'icon'
-                                title: data.error,
-                            });
-                        }
+        //                     Toast.fire({
+        //                         icon: 'success', // Updated to 'icon'
+        //                         title: data.success,
+        //                     });
 
-                    },
-                    error: function(data) {
+        //                     if (data.cart_count !== undefined) {
+        //                         $('#cartCount').text(data.cart_count);
+        //                     }
 
-                    }
-                })
+        //                     let ProductId = '#' + rowId;
+        //                     $(ProductId).text(data.totalPrice);
 
+        //                     $('.subtotal').val(data.subTotal)
 
+        //                 } else {
+        //                     console.log('Error Message:', data.error); // Log error message
 
+        //                     Toast.fire({
+        //                         icon: 'error', // Updated to 'icon'
+        //                         title: data.error,
+        //                     });
+        //                 }
 
-            });
-        })
+        //             },
+        //             error: function(data) {
 
-
-
-        $(document).ready(function() {
-            $('.productDecrement').on('click', function() {
-
-                let input = $(this).siblings('#qtyValue');
-                let rowId = input.data('rowid');
-                let value = 0;
-
-
-
-                if (input === 'string') {
-                    let value = parseInt(input.val());
-                } else {
-                    value = input.val();
-                }
-
-                if (value < 1) {
-                    value = 1
-                }
-
-
-                input.val(value)
-                // console.log(value, rowId);
-
-
-                $.ajax({
-                    url: "{{ route('increment') }}",
-                    method: 'POST',
-                    data: {
-                        quantity: value,
-                        rowId: rowId
-                    },
-                    success: function(data) {
-
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'bottom-end',
-                            icon: 'success',
-                            showConfirmButton: false,
-                            timer: 2000
-                        });
-
-                        if ($.isEmptyObject(data.error)) {
-                            console.log('Success Message:', data
-                                .success); // Log success message
-
-                            Toast.fire({
-                                icon: 'success', // Updated to 'icon'
-                                title: data.success,
-                            });
-
-                            if (data.cart_count !== undefined) {
-                                $('#cartCount').text(data.cart_count);
-                            }
-
-                            let ProductId = '#' + rowId;
-                            $(ProductId).text(data.totalPrice);
-
-                            $('.subtotal').text(data.subTotal)
-
-                        } else {
-                            console.log('Error Message:', data.error); // Log error message
-
-                            Toast.fire({
-                                icon: 'error', // Updated to 'icon'
-                                title: data.error,
-                            });
-                        }
-
-                    },
-                    error: function(data) {
-
-                    }
-                })
+        //             }
+        //         })
 
 
 
 
-            });
-        })
+        //     });
+        // })
+
+
+
+        // $(document).ready(function() {
+        //     $('.productDecrement').on('click', function() {
+
+        //         let input = $(this).siblings('#qtyValue');
+        //         let rowId = input.data('rowid'); // Extract rowId
+        //         let value = 0;
+
+        //         // Parse the current value as an integer
+        //         let item = parseInt(input.val(), 10);
+
+        //         // Increment the value
+        //         value = isNaN(item) ? 1 : item - 1;
+
+        //         // Set the new value back to the input
+
+        //         if (value < 1) {
+        //             value = 1
+        //         }
+
+
+        //         input.val(value)
+        //         // console.log(value, rowId);
+
+
+        //         $.ajax({
+        //             url: "{{ route('increment') }}",
+        //             method: 'POST',
+        //             data: {
+        //                 quantity: value,
+        //                 rowId: rowId
+        //             },
+        //             success: function(data) {
+
+        //                 const Toast = Swal.mixin({
+        //                     toast: true,
+        //                     position: 'bottom-end',
+        //                     icon: 'success',
+        //                     showConfirmButton: false,
+        //                     timer: 2000
+        //                 });
+
+        //                 if ($.isEmptyObject(data.error)) {
+        //                     console.log('Success Message:', data
+        //                         .success); // Log success message
+
+        //                     Toast.fire({
+        //                         icon: 'success', // Updated to 'icon'
+        //                         title: data.success,
+        //                     });
+
+        //                     if (data.cart_count !== undefined) {
+        //                         $('#cartCount').text(data.cart_count);
+        //                     }
+
+        //                     let ProductId = '#' + rowId;
+        //                     $(ProductId).text(data.totalPrice);
+
+        //                     $('.subtotal').val(data.subTotal)
+
+        //                 } else {
+        //                     console.log('Error Message:', data.error); // Log error message
+
+        //                     Toast.fire({
+        //                         icon: 'error', // Updated to 'icon'
+        //                         title: data.error,
+        //                     });
+        //                 }
+
+        //             },
+        //             error: function(data) {
+
+        //             }
+        //         })
+
+
+
+
+        //     });
+        // })
     </script>
 @endpush

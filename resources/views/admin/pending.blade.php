@@ -65,18 +65,16 @@
                                                 Invoice No.
                                             </th>
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
-                                                Customer
+                                                Customer name
                                             </th>
-                                            <th class="px-6 py-3 text-left font-medium text-zinc-50">
 
-                                                Items
-                                            </th>
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
                                                 Date
                                             </th>
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
                                                 Discount
                                             </th>
+
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
                                                 Receivable
                                             </th>
@@ -86,9 +84,7 @@
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
                                                 Product Returned
                                             </th>
-                                            <th class="px-6 py-3 text-left font-medium text-zinc-50">
-                                                Due
-                                            </th>
+
 
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
                                                 action
@@ -98,97 +94,88 @@
                                     <!-- HEAD end -->
                                     <!-- BODY start -->
                                     <tbody class="bg-white">
-                                        <tr>
+                                        @foreach ($data as $key => $item)
+                                            <tr>
 
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="text-sm leading-5 text-gray-900">
-                                                    1
-                                                </div>
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="text-sm leading-5 text-gray-900">
-                                                    924495997
-                                                </div>
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <div class="text-sm leading-5 text-gray-900">
-                                                    zubair
-                                                </div>
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <span
-                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                    itrem 1
-                                                </span>
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <span
-                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                    03 sep 2024
-                                                </span>
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <span
-                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                    10000 tk
-                                                </span>
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <span
-                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                    15000 tk
-                                                </span>
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <span
-                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                    11000 tk
-                                                </span>
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <span
-                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                    0 tk
-                                                </span>
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <span
-                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                    0 tk
-                                                </span>
-                                            </td>
-
-                                            <td
-                                                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                                                <div class="hs-dropdown ti-dropdown">
-                                                    <button aria-label="button" id="hs-dropdown-custom-icon-trigger"
-                                                        type="button" class="hs-dropdown-toggle p-3 ti-dropdown-toggle">
-                                                        <svg class="ti-dropdown-icon" xmlns="http://www.w3.org/2000/svg"
-                                                            width="16" height="16" fill="currentColor"
-                                                            viewBox="0 0 16 16">
-                                                            <path
-                                                                d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z">
-                                                            </path>
-                                                        </svg>
-                                                    </button>
-
-                                                    <div class="hs-dropdown-menu ti-dropdown-menu hidden"
-                                                        aria-labelledby="hs-dropdown-custom-trigger" style="">
-                                                        <a class="ti-dropdown-item" href="javascript:void(0);">
-                                                            Edit
-                                                        </a>
-                                                        <a class="ti-dropdown-item" href="javascript:void(0);">
-                                                            Delete
-                                                        </a>
-
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                    <div class="text-sm leading-5 text-gray-900">
+                                                        {{ $key++ }}
                                                     </div>
-                                                </div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                    <div class="text-sm leading-5 text-gray-900">
+                                                        {{ $item->order_number }}
+                                                    </div>
+                                                </td>
 
-                                            </td>
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                    <div class="text-sm leading-5 text-gray-900">
+                                                        {{ $item->name }}
+                                                    </div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                    <div class="text-sm leading-5 text-gray-900">
+                                                        {{ $item->phone }}
+                                                    </div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                    <span
+                                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                        {{ $item->payment_method }}
+                                                    </span>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                    <span
+                                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                        03 sep 2024
+                                                    </span>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                    <span
+                                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                        {{ $item->sub_total }}
+                                                    </span>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                    <span
+                                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                        {{ $item->status }}
+                                                    </span>
+                                                </td>
 
 
-                                        </tr>
+                                                <td
+                                                    class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
+                                                    <div class="hs-dropdown ti-dropdown">
+                                                        <button aria-label="button" id="hs-dropdown-custom-icon-trigger"
+                                                            type="button"
+                                                            class="hs-dropdown-toggle p-3 ti-dropdown-toggle">
+                                                            <svg class="ti-dropdown-icon" xmlns="http://www.w3.org/2000/svg"
+                                                                width="16" height="16" fill="currentColor"
+                                                                viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z">
+                                                                </path>
+                                                            </svg>
+                                                        </button>
+
+                                                        <div class="hs-dropdown-menu ti-dropdown-menu hidden"
+                                                            aria-labelledby="hs-dropdown-custom-trigger" style="">
+                                                            <a class="ti-dropdown-item" href="javascript:void(0);">
+                                                                Edit
+                                                            </a>
+                                                            <a class="ti-dropdown-item" href="javascript:void(0);">
+                                                                Delete
+                                                            </a>
+
+                                                        </div>
+                                                    </div>
+
+                                                </td>
+
+
+                                            </tr>
+                                        @endforeach
 
 
                                     </tbody>

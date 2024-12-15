@@ -9,6 +9,8 @@ use App\Http\Controllers\posController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubCategoryController;
+use App\Models\Order;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +31,13 @@ Route::get('/login', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::get('/UserOrder', function () {
+    $userid = Auth::user()->id;
+    $data = Order::where('payment_type', 'online')->where('id', $userid)->get();
+    return view('UserOrder', compact('data'));
+})->middleware(['auth', 'verified'])->name('UserOrder');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -52,11 +61,9 @@ Route::get('/checkout', [FrontendController::class, 'checkout'])->name('checkout
 Route::post('/add-to-cart', [FrontendController::class, 'addToCart'])->name('addToCart');
 Route::post('/add-to-cartOne', [FrontendController::class, 'addToCartOne'])->name('addToCartOne');
 Route::get('/cartPage', [FrontendController::class, 'cartPage'])->name('cartPage');
-Route::get('/removeItem{id}', [FrontendController::class, 'removeItem'])->name('removeItem');
+Route::get('/removeItem/{id}', [FrontendController::class, 'removeItem'])->name('removeItem');
 Route::Post('/cart/increment', [FrontendController::class, 'increment'])->name('increment');
 Route::Post('/checkOutNow', [FrontendController::class, 'checkOutNow'])->name('checkOutNow');
-
-
 
 
 
@@ -103,6 +110,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     //pos-area
     Route::get('/pos', [posController::class, 'pos'])->name('pos');
+    Route::post('/add-to-cartOne-pos', [posController::class, 'addToCartOnePos'])->name('addToCartOnePos');
 
     //owner-area
     Route::get('/owner', [OwnerController::class, 'owner'])->name('owner');
@@ -113,11 +121,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     // sales pos 
     Route::get('/sales', [posController::class, 'sales'])->name('sales');
+
+
+
     Route::get('/return', [posController::class, 'return'])->name('return');
     Route::get('/addPurchases', [posController::class, 'addPurchases'])->name('addPurchases');
     Route::get('/addPurchasesData', [posController::class, 'addPurchasesData'])->name('addPurchasesData');
     Route::get('/addDamages', [posController::class, 'addDamages'])->name('addDamages');
     Route::get('/addDamagesData', [posController::class, 'addDamagesData'])->name('addDamagesData');
+
+
     Route::get('/confirm', [posController::class, 'confirm'])->name('confirm');
     Route::get('/pending', [posController::class, 'pending'])->name('pending');
 });
