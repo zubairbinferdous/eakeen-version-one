@@ -73,7 +73,7 @@
                                             </th>
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
 
-                                                Sub T
+                                                Sub Total
                                             </th>
 
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
@@ -85,7 +85,52 @@
                                     <!-- BODY start -->
                                     <tbody class="bg-white" id="cart-items">
                                         <!-- The rows will be dynamically inserted here -->
+                                        @foreach ($dataPos as $item)
+                                            <tr class="hover:bg-gray-50 transition-all duration-200">
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                    <div class="text-sm leading-5 text-gray-900">{{ $item->name }}</div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                    <div class="flex items-center justify-start space-x-2 rounded-md">
+                                                        <button type="button"
+                                                            class="productDecrement quantity__minus border border-gray-200 rounded-full p-2 hover:bg-main-600 hover:text-black transition-colors">
+                                                            <i class="ph ph-minus">-</i>
+                                                        </button>
+
+                                                        <input type="number" readonly
+                                                            class="quantity__input border border-gray-200 text-center w-20 px-3 rounded-md"
+                                                            value="{{ $item->qty }}" data-rowid="{{ $item->rowId }}"
+                                                            min="1" id="qtyValue">
+
+                                                        <button type="button"
+                                                            class="productIncrement quantity__plus border border-gray-200 rounded-full p-2 hover:bg-main-600 hover:text-black transition-colors">
+                                                            <i class="ph ph-plus">+</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                    <span
+                                                        class="text-lg font-semibold text-gray-900">{{ $item->price }}</span>
+                                                </td>
+
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                    <span class="text-lg font-semibold text-gray-900"
+                                                        id="{{ $item->rowId }}">{{ $item->subtotal }}</span>
+                                                </td>
+
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b">
+                                                    <button type="button" id="{{ $item->rowId }}"
+                                                        onclick="cartRemove(this.id)" class="remove">
+                                                        Remove
+                                                    </button>
+                                                </td>
+
+
+                                            </tr>
+                                        @endforeach
                                     </tbody>
+
 
                                     <!-- BODY end -->
                                 </table>
@@ -113,7 +158,7 @@
                             @csrf
                             <div id="orderModal"
                                 class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-                                <div class="bg-white p-6 rounded-lg max-w-md w-full shadow-lg z-60">
+                                <div class="bg-white p-6 rounded-lg max-w-sm w-full shadow-lg z-60">
                                     <h2 class="text-xl font-semibold mb-4">Order Submitted </h2>
 
                                     <!-- Form Inputs -->
@@ -123,7 +168,8 @@
                                                 class="block text-sm font-medium text-gray-700">Amount</label>
                                             <input type="text" id="name" name="amount"
                                                 class="mt-1 block w-full border border-gray-300 rounded-md p-2 subtotal"
-                                                placeholder="Enter your name" readonly value="{{ Cart::subtotal() }}">
+                                                placeholder="Enter your name" readonly disabled
+                                                value="{{ Cart::subtotal() }}">
                                         </div>
                                         <div>
                                             <label for="name"
@@ -134,7 +180,7 @@
                                         </div>
                                         <div>
                                             <label for="name"
-                                                class="block text-sm font-medium text-gray-700">Name</label>
+                                                class="block text-sm font-medium text-gray-700">Phone</label>
                                             <input type="text" id="name" name="phone"
                                                 class="mt-1 block w-full border border-gray-300 rounded-md p-2"
                                                 placeholder="Enter your name" required>
@@ -163,8 +209,8 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <input type="hidden" class="common-input border-gray-100" placeholder="Post Code"
-                                            name="PostCode" required value="00000">
+                                        <input type="hidden" class="common-input border-gray-100"
+                                            placeholder="Post Code" name="PostCode" required value="00000">
                                     </div>
 
                                     <input type="hidden" value="{{ Cart::subtotal() }}" name="subTotal">
@@ -220,10 +266,10 @@
                                 <div class="product-box box">
                                     <div class="box-body space-y-2">
                                         <div class="product-image">
-                                            <a href="products-details.html" class="image">
-                                                <img class="mx-auto rounded-sm" src="{{ $item->ProductImages }}"
-                                                    alt="img">
-                                            </a>
+
+                                            <img class="mx-auto image  rounded-sm" src="{{ $item->ProductImages }}"
+                                                alt="img">
+
                                         </div>
                                         <div class="product-details space-y-1">
                                             <h5 class="text-xs font-semibold">{{ $item->product_title }}</h5>
@@ -317,6 +363,8 @@
                                 title: data.success,
                             });
 
+
+
                             if (data.cart_count !== undefined) {
                                 $('#cartCount').text(data.cart_count); // Update cart count
                             }
@@ -325,7 +373,7 @@
 
 
                             let items = data.dataItem; // Use dataItem from the response
-                            console.log(items)
+                            // console.log(items)
 
                             if (typeof items === 'object') {
                                 let productArea = $('#cart-items');
@@ -371,11 +419,15 @@
                                         </td>
 
                                       <td class="px-6 py-4 whitespace-no-wrap border-b">
-                                     <a href="" class="">
-                                     <span class="font-medium">Remove</span>
-                                       </a>   
-                                      </td>
-
+                                <button
+                                    type="button"
+                                    id="${item.rowId}"
+                                    onclick="cartRemove(this.id)"
+                                    class="remove"
+                                >
+                                    Remove
+                                </button>
+                            </td>
                                     </tr>  
                                 `);
 
@@ -492,164 +544,52 @@
                     }
                 });
             });
+
+
+            // Event delegation for Decrement button
+
+
+
+
         });
 
+        function cartRemove(id) {
+            $.ajax({
+                type: "GET",
+                dataType: 'json',
+                url: "/pos-remove/" + id,
+                success: function(data) {
+
+                    location.reload();
+                    // Start Message 
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'bottom-end',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+
+                        Toast.fire({
+                            type: 'success',
+                            icon: 'success',
+                            title: data.success,
+                        })
 
 
 
 
-        // $(document).ready(function() {
-        //     $('.productIncrement').on('click', function() {
+                    } else {
 
-        //         let input = $(this).siblings('#qtyValue');
-        //         let rowId = input.data('rowid'); // Extract rowId
-        //         let value = 0;
-
-        //         // Parse the current value as an integer
-        //         let item = parseInt(input.val(), 10);
-
-        //         // Increment the value
-        //         value = isNaN(item) ? 1 : item + 1;
-
-        //         // Set the new value back to the input
-        //         input.val(value);
-
-        //         $.ajax({
-        //             url: "{{ route('increment') }}",
-        //             method: 'POST',
-        //             data: {
-        //                 quantity: value,
-        //                 rowId: rowId
-        //             },
-        //             success: function(data) {
-
-        //                 const Toast = Swal.mixin({
-        //                     toast: true,
-        //                     position: 'bottom-end',
-        //                     icon: 'success',
-        //                     showConfirmButton: false,
-        //                     timer: 2000
-        //                 });
-
-        //                 if ($.isEmptyObject(data.error)) {
-        //                     console.log('Success Message:', data
-        //                         .success); // Log success message
-
-        //                     Toast.fire({
-        //                         icon: 'success', // Updated to 'icon'
-        //                         title: data.success,
-        //                     });
-
-        //                     if (data.cart_count !== undefined) {
-        //                         $('#cartCount').text(data.cart_count);
-        //                     }
-
-        //                     let ProductId = '#' + rowId;
-        //                     $(ProductId).text(data.totalPrice);
-
-        //                     $('.subtotal').val(data.subTotal)
-
-        //                 } else {
-        //                     console.log('Error Message:', data.error); // Log error message
-
-        //                     Toast.fire({
-        //                         icon: 'error', // Updated to 'icon'
-        //                         title: data.error,
-        //                     });
-        //                 }
-
-        //             },
-        //             error: function(data) {
-
-        //             }
-        //         })
-
-
-
-
-        //     });
-        // })
-
-
-
-        // $(document).ready(function() {
-        //     $('.productDecrement').on('click', function() {
-
-        //         let input = $(this).siblings('#qtyValue');
-        //         let rowId = input.data('rowid'); // Extract rowId
-        //         let value = 0;
-
-        //         // Parse the current value as an integer
-        //         let item = parseInt(input.val(), 10);
-
-        //         // Increment the value
-        //         value = isNaN(item) ? 1 : item - 1;
-
-        //         // Set the new value back to the input
-
-        //         if (value < 1) {
-        //             value = 1
-        //         }
-
-
-        //         input.val(value)
-        //         // console.log(value, rowId);
-
-
-        //         $.ajax({
-        //             url: "{{ route('increment') }}",
-        //             method: 'POST',
-        //             data: {
-        //                 quantity: value,
-        //                 rowId: rowId
-        //             },
-        //             success: function(data) {
-
-        //                 const Toast = Swal.mixin({
-        //                     toast: true,
-        //                     position: 'bottom-end',
-        //                     icon: 'success',
-        //                     showConfirmButton: false,
-        //                     timer: 2000
-        //                 });
-
-        //                 if ($.isEmptyObject(data.error)) {
-        //                     console.log('Success Message:', data
-        //                         .success); // Log success message
-
-        //                     Toast.fire({
-        //                         icon: 'success', // Updated to 'icon'
-        //                         title: data.success,
-        //                     });
-
-        //                     if (data.cart_count !== undefined) {
-        //                         $('#cartCount').text(data.cart_count);
-        //                     }
-
-        //                     let ProductId = '#' + rowId;
-        //                     $(ProductId).text(data.totalPrice);
-
-        //                     $('.subtotal').val(data.subTotal)
-
-        //                 } else {
-        //                     console.log('Error Message:', data.error); // Log error message
-
-        //                     Toast.fire({
-        //                         icon: 'error', // Updated to 'icon'
-        //                         title: data.error,
-        //                     });
-        //                 }
-
-        //             },
-        //             error: function(data) {
-
-        //             }
-        //         })
-
-
-
-
-        //     });
-        // })
+                        Toast.fire({
+                            type: 'error',
+                            icon: 'error',
+                            title: data.error,
+                        })
+                    }
+                    // End Message  
+                }
+            })
+        }
     </script>
 @endpush

@@ -48,6 +48,15 @@ class posController extends Controller
         ]);
     }
 
+    public function removeProduct($id)
+    {
+        Cart::remove($id);
+        return response()->json([
+            'success' => 'Item remove  successfully',
+            'dataItem' => Cart::content()
+        ]);
+    }
+
 
 
 
@@ -62,6 +71,9 @@ class posController extends Controller
         $data = Order::where('payment_type', 'pos')->get();
         return view('admin.sales', compact('data'));
     }
+
+
+
 
     public function return()
     {

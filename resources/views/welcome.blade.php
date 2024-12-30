@@ -688,6 +688,28 @@
                         </li>
 
 
+                        <li class="slide__category"><span class="category-name">Affiliated Area</span></li>
+
+
+                        <li class="slide  has-sub">
+                            <a href="javascript:void(0)" class="side-menu__item">
+                                <i class="ri-home-8-line side-menu__icon"></i>
+                                <span class="side-menu__label">Affiliated </span>
+                                <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
+                            </a>
+                            <ul class="slide-menu child1">
+                                <li class="slide"><a href="{{ route('affiliate') }}"
+                                        class="side-menu__item">Affiliated
+                                        packages </a>
+                                </li>
+                                <li class="slide"><a href="{{ route('confirm') }}"
+                                        class="side-menu__item">Affiliated Confirm
+                                        Data</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
 
                     </ul>
 

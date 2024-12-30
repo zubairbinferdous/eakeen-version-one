@@ -109,7 +109,9 @@ class FrontendController extends Controller
     public function increment(Request $request)
     {
         Cart::update($request->rowId, $request->quantity);
+
         $productTotalPrice = $this->ProductTotal($request->rowId);
+
         return response()->json(['success' => 'Item update successfully', 'cart_count' => Cart::count(), "totalPrice" => $productTotalPrice, 'subTotal' => Cart::subtotal()]);
     }
 
@@ -121,11 +123,14 @@ class FrontendController extends Controller
         return $total;
     }
 
-    function removeItem($id)
+    public function removeItem($id)
     {
         Cart::remove($id);
         return redirect()->back();
     }
+
+
+
 
     public function checkout()
     {
@@ -145,9 +150,9 @@ class FrontendController extends Controller
         $order_number = 'ORN' . mt_rand(10000000, 99999999);
         $order_id = Order::insertGetId([
             'name' => $request->name,
-            'user_id' => Auth::check() ? Auth::id() : 0,
-            'phone' => $request->phone,
-            'email' => $request->email,
+            'user_id' => Auth::check() ? Auth::user()->id : 0,
+            'phone' => Auth::check() ? Auth::user()->phone : $request->phone,
+            'email' =>  Auth::check() ? Auth::user()->email : $request->email,
             'payment_method' => 'Cash On Delivery',
             'payment_type' =>  $request->paymentType ? 'pos' : 'online',
             'city' => $request->city,

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AffiliatedController;
 use App\Http\Controllers\BankController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\posController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubCategoryController;
+use App\Models\Affiliated;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -62,6 +64,7 @@ Route::post('/add-to-cart', [FrontendController::class, 'addToCart'])->name('add
 Route::post('/add-to-cartOne', [FrontendController::class, 'addToCartOne'])->name('addToCartOne');
 Route::get('/cartPage', [FrontendController::class, 'cartPage'])->name('cartPage');
 Route::get('/removeItem/{id}', [FrontendController::class, 'removeItem'])->name('removeItem');
+
 Route::Post('/cart/increment', [FrontendController::class, 'increment'])->name('increment');
 Route::Post('/checkOutNow', [FrontendController::class, 'checkOutNow'])->name('checkOutNow');
 
@@ -111,6 +114,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     //pos-area
     Route::get('/pos', [posController::class, 'pos'])->name('pos');
     Route::post('/add-to-cartOne-pos', [posController::class, 'addToCartOnePos'])->name('addToCartOnePos');
+    Route::get('/pos-remove/{id}', [posController::class, 'removeProduct'])->name('removeProduct');
 
     //owner-area
     Route::get('/owner', [OwnerController::class, 'owner'])->name('owner');
@@ -133,6 +137,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('/confirm', [posController::class, 'confirm'])->name('confirm');
     Route::get('/pending', [posController::class, 'pending'])->name('pending');
+
+
+    // affiliated 
+    Route::get('/affiliate', [AffiliatedController::class, 'affiliate'])->name('affiliate');
+    Route::post('/packages/store', [AffiliatedController::class, 'packagesStore'])->name('packages.store');
 });
 
 
