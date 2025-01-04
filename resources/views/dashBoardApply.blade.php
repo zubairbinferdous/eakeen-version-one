@@ -43,49 +43,6 @@
         .ml100 {
             margin-left: 20px;
         }
-
-        .dashboard-cards {
-            display: flex;
-            justify-content: space-between;
-            gap: 16px;
-        }
-
-        .card {
-            background: #fff;
-            border: 1px solid #f0f0f0;
-            border-radius: 8px;
-            text-align: center;
-            padding: 16px;
-            width: calc(100% / 6 - 16px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card .icon {
-            font-size: 24px;
-            color: #ff8a00;
-            margin-bottom: 8px;
-        }
-
-        .card .text {
-            font-size: 16px;
-            color: #333;
-            margin-bottom: 4px;
-        }
-
-        .card .number {
-            font-size: 20px;
-            font-weight: bold;
-            color: #333;
-        }
-
-
-        .card.highlighted .icon,
-        .card.highlighted .number {}
     </style>
 
 
@@ -111,6 +68,16 @@
                         <a href="{{ route('UserOrder') }}" class="sidebar-option">
                             <i class="bi bi-bag-check"></i> My Order
                         </a>
+                        {{-- <a href="#" class="sidebar-option">
+                            <i class="bi bi-chat-left-text"></i> Support Ticket
+                        </a>
+                        <a href="#" class="sidebar-option">
+                            <i class="bi bi-person"></i> My Account
+                        </a>
+                        <hr>
+                        <a href="#" class="sidebar-option">
+                            <i class="bi bi-bell"></i> Notification
+                        </a> --}}
 
                     </nav>
                     <form action="{{ route('logout') }}" method="POST" class="ml100">
@@ -128,39 +95,43 @@
 
                     <div class="col-xl-9 col-lg-8">
 
-                        <div class="dashboard-cards">
-                            <div class="card">
-                                <div class="icon"><i class="fa fa-trash"></i></div>
-                                <div class="text">Total Order</div>
-                                <div class="number">1</div>
+                        <div class="row gy-3">
+                            <div class="col-sm-12">
+                                <input type="text" class="common-input border-gray-100" placeholder="Name" name="name"
+                                    required>
                             </div>
-                            <div class="card">
-                                <div class="icon"><i class="fa fa-star"></i></div>
-                                <div class="text">My Wishlist</div>
-                                <div class="number">0</div>
+
+                            <div class="col-12">
+                                <input type="number" class="common-input border-gray-100" placeholder="Phone"
+                                    name="phone" required>
                             </div>
-                            <div class="card">
-                                <div class="icon"><i class="fa fa-refresh"></i></div>
-                                <div class="text">Refund Success</div>
-                                <div class="number">0</div>
+
+                            <div class="col-12">
+                                <input type="email" class="common-input border-gray-100" placeholder="Email Address"
+                                    name="email" required>
                             </div>
-                            <div class="card">
-                                <div class="icon"><i class="fa fa-shopping-bag"></i></div>
-                                <div class="text">Product in Cart</div>
-                                <div class="number">2</div>
+
+                            <div class="col-12">
+                                <input type="text" class="common-input border-gray-100" placeholder="City" name="city"
+                                    required>
                             </div>
-                            <div class="card highlighted">
-                                <div class="icon"><i class="fa fa-ticket"></i></div>
-                                <div class="text">Coupon Used</div>
-                                <div class="number">0</div>
+
+                            <div class="col-12">
+                                <input type="text" class="common-input border-gray-100" placeholder="Post Code"
+                                    name="PostCode" required>
                             </div>
-                            <div class="card">
-                                <div class="icon"><i class="fa fa-check"></i></div>
-                                <div class="text">Completed Order</div>
-                                <div class="number">0</div>
+
+                            <div class="col-12">
+                                <textarea name="Address" class="common-input" id="" cols="30" rows="10" placeholder="Address"
+                                    required></textarea>
                             </div>
+
+
+
                         </div>
 
+                        <button type="submit" class="btn btn-main mt-40 py-18 w-100 rounded-8 mt-56"> Apply for Affiliate
+                        </button>
 
                     </div>
 

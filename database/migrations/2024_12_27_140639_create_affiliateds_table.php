@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('payment_type');
             $table->string('noteOne');
             $table->string('noteTwo');
+            $table->string('status');
             $table->timestamps();
         });
     }

@@ -687,11 +687,7 @@
     <div class="bottom-footer bg-color-one py-8">
         <div class="container container-lg">
             <div class="bottom-footer__inner flex-between flex-wrap gap-16 py-16">
-                <p class="bottom-footer__text ">Marketpro eCommerce &copy; 2024. All Rights Reserved </p>
-                <div class="flex-align gap-8 flex-wrap">
-                    <span class="text-heading text-sm">We Are Acepting</span>
-                    <img src="assets/images/thumbs/payment-method.png" alt="">
-                </div>
+                <p class="bottom-footer__text ">Eakeen eCommerce &copy; 2024. All Rights Reserved </p>
             </div>
         </div>
     </div>

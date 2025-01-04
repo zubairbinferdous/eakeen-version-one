@@ -45,6 +45,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
+    // affiliate system
+
+    Route::get('/getAffiliate', [AffiliatedController::class, 'affiliateSystem'])->name('affiliate_system');
+    Route::get('/getAffiliateApply', [AffiliatedController::class, 'affiliateApply'])->name('affiliateApply');
 });
 
 // front-end-area 

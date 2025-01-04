@@ -22,8 +22,20 @@ class AffiliatedController extends Controller
             'payment_type' => $request->payment_type,
             'noteOne' => $request->noteOne,
             'noteTwo' => $request->noteTwo,
+            'status' => $request->status,
         ]);
 
         return redirect()->back()->with('success', 'packages add successfully');
+    }
+
+    public function affiliateSystem()
+    {
+
+        $data = Affiliated::where('status', 'Publish')->get();
+        return view('affiliateDashBord', compact('data'));
+    }
+    public function affiliateApply()
+    {
+        return view('dashBoardApply');
     }
 }

@@ -160,7 +160,6 @@ class FrontendController extends Controller
             'address' => $request->Address,
             'status' => 'pending',
             'sub_total' => str_replace(',', '', $request->subTotal),
-
             // 'invoice_no' => 'EOS' . mt_rand(10000000, 99999999),
             'order_number' => $order_number,  // Use generated order number
             // 'order_date' => Carbon::now()->format('d F Y'),

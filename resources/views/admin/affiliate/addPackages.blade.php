@@ -6,7 +6,7 @@
             <!-- Page Header -->
             <div class="block justify-between page-header md:flex">
                 <div>
-                    <h3 class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-white text-2xl font-medium">
+                    <h3 class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-white text-sm font-medium">
                         Add Packages</h3>
                 </div>
 
@@ -63,6 +63,18 @@
                                                         <label class="ti-form-label mb-0">Number</label>
                                                         <input type="text" class="my-auto ti-form-input"
                                                             placeholder="number" name="number" required>
+                                                    </div>
+
+
+                                                    <div class="space-y-2 product-1">
+                                                        <label for="product-status" class="ti-form-label mb-0">Product
+                                                            Status</label>
+                                                        <select id="product-status" class="ti-form-select product-search"
+                                                            name="status" required>
+                                                            <option value="" disabled selected>Status</option>
+                                                            <option value="Publish">Publish</option>
+                                                            <option value="Unpublish">Unpublish</option>
+                                                        </select>
                                                     </div>
 
 
