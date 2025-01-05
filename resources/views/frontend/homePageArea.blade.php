@@ -1,5 +1,6 @@
 @extends('frontend.frontend')
 @section('content_area')
+
     <!-- ============================ Banner Section start =============================== -->
 
     <div class="banner">
@@ -29,7 +30,7 @@
 
                 <div class="banner-slider">
                     <div class="banner-slider__item">
-                        <div class="banner-slider__inner flex-between position-relative">
+                        <div class="banner-slider__inner flex-between position-relative"> 
                             <div class="banner-item__content">
                                 <h1 class="banner-item__title bounce">Daily Grocery Order and Get Express Delivery</h1>
                                 <a href="shop.html"
