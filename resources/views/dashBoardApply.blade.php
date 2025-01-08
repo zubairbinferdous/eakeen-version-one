@@ -68,16 +68,6 @@
                         <a href="{{ route('UserOrder') }}" class="sidebar-option">
                             <i class="bi bi-bag-check"></i> My Order
                         </a>
-                        {{-- <a href="#" class="sidebar-option">
-                            <i class="bi bi-chat-left-text"></i> Support Ticket
-                        </a>
-                        <a href="#" class="sidebar-option">
-                            <i class="bi bi-person"></i> My Account
-                        </a>
-                        <hr>
-                        <a href="#" class="sidebar-option">
-                            <i class="bi bi-bell"></i> Notification
-                        </a> --}}
 
                     </nav>
                     <form action="{{ route('logout') }}" method="POST" class="ml100">
@@ -95,36 +85,162 @@
 
                     <div class="col-xl-9 col-lg-8">
 
-                        <div class="row gy-3">
-                            <div class="col-sm-12">
-                                <input type="text" class="common-input border-gray-100" placeholder="Name" name="name"
-                                    required>
+                        <div class="row gy-3 mt-5">
+
+                            <div class="row mb-3">
+                                <!-- Blood Group -->
+                                <div class="col-md-6">
+                                    <label for="bloodGroup" class="form-label">Blood Group<span
+                                            class="text-danger">*</span></label>
+                                    <select id="bloodGroup" class="form-select" required>
+                                        <option selected disabled>Select Blood Group</option>
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                    </select>
+                                </div>
+                                <!-- Date of Birth -->
+                                <div class="col-md-6">
+                                    <label for="dob" class="form-label">Date of Birth<span
+                                            class="text-danger">*</span></label>
+                                    <input type="date" id="dob" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <!-- Gender -->
+                                <div class="col-md-6">
+                                    <label for="gender" class="form-label">Gender<span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" id="gender" class="form-control" placeholder="Male" required>
+                                </div>
+                                <!-- WhatsApp Number -->
+                                <div class="col-md-6">
+                                    <label for="whatsapp" class="form-label">WhatsApp Number<span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" id="whatsapp" class="form-control"
+                                        placeholder="Enter your WhatsApp number" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <!-- NID Number -->
+                                <div class="col-md-6">
+                                    <label for="nidNumber" class="form-label">NID Number<span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" id="nidNumber" class="form-control"
+                                        placeholder="Enter your NID number" required>
+                                </div>
+                                <!-- NID Image Front -->
+                                <div class="col-md-6">
+                                    <label for="nidFront" class="form-label">NID Image Front<span
+                                            class="text-danger">*</span></label>
+                                    <input type="file" id="nidFront" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <!-- NID Image Back -->
+                                <div class="col-md-6">
+                                    <label for="nidBack" class="form-label">NID Image Back<span
+                                            class="text-danger">*</span></label>
+                                    <input type="file" id="nidBack" class="form-control" required>
+                                </div>
+                                <!-- District -->
+                                <div class="col-md-6">
+                                    <label for="district" class="form-label">District<span
+                                            class="text-danger">*</span></label>
+                                    <select id="district" class="form-select" required>
+                                        <option selected disabled>Select District</option>
+                                        <option value="Bagerhat">Bagerhat</option>
+                                        <option value="Bandarban">Bandarban</option>
+                                        <option value="Barguna">Barguna</option>
+                                        <option value="Barishal">Barishal</option>
+                                        <option value="Bhola">Bhola</option>
+                                        <option value="Bogra">Bogra</option>
+                                        <option value="Brahmanbaria">Brahmanbaria</option>
+                                        <option value="Chandpur">Chandpur</option>
+                                        <option value="Chattogram">Chattogram</option>
+                                        <option value="Chuadanga">Chuadanga</option>
+                                        <option value="Cox's Bazar">Cox's Bazar</option>
+                                        <option value="Cumilla">Cumilla</option>
+                                        <option value="Dhaka">Dhaka</option>
+                                        <option value="Dinajpur">Dinajpur</option>
+                                        <option value="Faridpur">Faridpur</option>
+                                        <option value="Feni">Feni</option>
+                                        <option value="Gaibandha">Gaibandha</option>
+                                        <option value="Gazipur">Gazipur</option>
+                                        <option value="Gopalganj">Gopalganj</option>
+                                        <option value="Habiganj">Habiganj</option>
+                                        <option value="Jamalpur">Jamalpur</option>
+                                        <option value="Jashore">Jashore</option>
+                                        <option value="Jhalokati">Jhalokati</option>
+                                        <option value="Jhenaidah">Jhenaidah</option>
+                                        <option value="Joypurhat">Joypurhat</option>
+                                        <option value="Khagrachari">Khagrachari</option>
+                                        <option value="Khulna">Khulna</option>
+                                        <option value="Kishoreganj">Kishoreganj</option>
+                                        <option value="Kurigram">Kurigram</option>
+                                        <option value="Kushtia">Kushtia</option>
+                                        <option value="Lakshmipur">Lakshmipur</option>
+                                        <option value="Lalmonirhat">Lalmonirhat</option>
+                                        <option value="Madaripur">Madaripur</option>
+                                        <option value="Magura">Magura</option>
+                                        <option value="Manikganj">Manikganj</option>
+                                        <option value="Meherpur">Meherpur</option>
+                                        <option value="Moulvibazar">Moulvibazar</option>
+                                        <option value="Munshiganj">Munshiganj</option>
+                                        <option value="Mymensingh">Mymensingh</option>
+                                        <option value="Naogaon">Naogaon</option>
+                                        <option value="Narail">Narail</option>
+                                        <option value="Narayanganj">Narayanganj</option>
+                                        <option value="Narsingdi">Narsingdi</option>
+                                        <option value="Natore">Natore</option>
+                                        <option value="Netrokona">Netrokona</option>
+                                        <option value="Nilphamari">Nilphamari</option>
+                                        <option value="Noakhali">Noakhali</option>
+                                        <option value="Pabna">Pabna</option>
+                                        <option value="Panchagarh">Panchagarh</option>
+                                        <option value="Patuakhali">Patuakhali</option>
+                                        <option value="Pirojpur">Pirojpur</option>
+                                        <option value="Rajbari">Rajbari</option>
+                                        <option value="Rajshahi">Rajshahi</option>
+                                        <option value="Rangamati">Rangamati</option>
+                                        <option value="Rangpur">Rangpur</option>
+                                        <option value="Satkhira">Satkhira</option>
+                                        <option value="Shariatpur">Shariatpur</option>
+                                        <option value="Sherpur">Sherpur</option>
+                                        <option value="Sirajganj">Sirajganj</option>
+                                        <option value="Sunamganj">Sunamganj</option>
+                                        <option value="Sylhet">Sylhet</option>
+                                        <option value="Tangail">Tangail</option>
+                                        <option value="Thakurgaon">Thakurgaon</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <!-- Thana -->
+                                <div class="col-md-6">
+                                    <label for="thana" class="form-label">Thana<span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" id="thana" class="form-control" placeholder="Enter Thana"
+                                        required>
+                                </div>
+                                <!-- Payment Type -->
+                                <div class="col-md-6">
+                                    <label for="paymentType" class="form-label">Payment Type<span
+                                            class="text-danger">*</span></label>
+                                    <select id="paymentType" class="form-select" required>
+                                        <option selected disabled>-- Select a Payment Type --</option>
+                                        <option value="Bkash">Bkash</option>
+                                        <option value="Rocket">Rocket</option>
+                                        <option value="Nagad">Nagad</option>
+                                    </select>
+                                </div>
                             </div>
 
-                            <div class="col-12">
-                                <input type="number" class="common-input border-gray-100" placeholder="Phone"
-                                    name="phone" required>
-                            </div>
 
-                            <div class="col-12">
-                                <input type="email" class="common-input border-gray-100" placeholder="Email Address"
-                                    name="email" required>
-                            </div>
-
-                            <div class="col-12">
-                                <input type="text" class="common-input border-gray-100" placeholder="City" name="city"
-                                    required>
-                            </div>
-
-                            <div class="col-12">
-                                <input type="text" class="common-input border-gray-100" placeholder="Post Code"
-                                    name="PostCode" required>
-                            </div>
-
-                            <div class="col-12">
-                                <textarea name="Address" class="common-input" id="" cols="30" rows="10" placeholder="Address"
-                                    required></textarea>
-                            </div>
 
 
 

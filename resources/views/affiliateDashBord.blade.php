@@ -100,32 +100,31 @@
                             <form action="{{ route('affiliateApply') }}" method="GET">
                                 <div class="col-md-4">
                                     <div class="affiliate-card">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <span>Basic</span>
-                                            </div>
-                                            <div class="card-body">
-                                                <h4 class="price">2000 BDT</h4>
-                                                <p>Basic Affiliate Package</p>
-                                                <p>Payment on Nagad</p>
-                                                <p>01648837327</p>
-                                                <h5>Instructions:</h5>
-                                                <ol>
-                                                    <li>Send money to the above Nagad number, then note the transaction
-                                                        number
-                                                        and
-                                                        take
-                                                        a screenshot.</li>
-                                                    <li>Take a photo of both sides of your NID and keep it ready.</li>
-                                                </ol>
-                                                <p>Afterward, click Apply and follow the instructions. Thank you!</p>
-                                            </div>
+                                        @foreach ($data as $item)
+                                            <input type="hidden" name="Packages_amount"
+                                                value="{{ $item->Packages_amount }}">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <span>{{ $item->Packages_name }}</span>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h4 class="price">{{ $item->Packages_amount }}BDT </h4>
+                                                    <p>{{ $item->Packages_name }} Affiliate Package </p>
+                                                    <p>Payment on {{ $item->payment_type }} </p>
+                                                    <p> {{ $item->number }}</p>
+                                                    <h5>Instructions:</h5>
+                                                    <ol>
+                                                        <li>{{ $item->noteOne }}.</li>
+                                                        <li>{{ $item->noteTwo }}.</li>
+                                                    </ol>
+                                                    <p>Afterward, click Apply and follow the instructions. Thank you!</p>
+                                                </div>
 
-                                        </div>
+                                            </div>
+                                        @endforeach
                                     </div>
-                                    <button type="submit" class="btn btn-main mt-5 py-18 w-100 rounded-8 "> <a
-                                            href="">Apply for
-                                            Affiliate</a>
+                                    <button type="submit" class="btn btn-main mt-5 py-18 w-100 rounded-8 "> Apply for
+                                        Affiliate
                                     </button>
 
                                 </div>

@@ -34,8 +34,11 @@ class AffiliatedController extends Controller
         $data = Affiliated::where('status', 'Publish')->get();
         return view('affiliateDashBord', compact('data'));
     }
-    public function affiliateApply()
+
+
+    public function affiliateApply(Request $request)
     {
-        return view('dashBoardApply');
+        $Packages_amount = $request->Packages_amount;
+        return view('dashBoardApply', compact("Packages_amount"));
     }
 }
