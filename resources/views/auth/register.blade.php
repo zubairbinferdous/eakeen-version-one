@@ -84,12 +84,17 @@
                                 <input type="phone" name="phone" class="common-input" id="username"
                                     placeholder="Phone">
                             </div>
+
+
+
                             <div class="mb-24">
                                 <label for="username" class="text-neutral-900 text-lg mb-8 fw-medium">Referral Code
                                     <span class="text-danger">*</span> </label>
-                                <input type="test" class="common-input" id="username" placeholder="Referral Code"
+                                <input type="test" class="common-input" id="referral" placeholder="Referral Code"
                                     name="Referral">
                             </div>
+
+
                             <div class="mb-24">
                                 <label for="username" class="text-neutral-900 text-lg mb-8 fw-medium">Email
                                     address <span class="text-danger">*</span> </label>
@@ -129,3 +134,16 @@
         </div>
     </section>
 @endsection
+
+@push('script')
+    <script>
+        // Extract the Referral parameter from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const referral = urlParams.get('Referral');
+
+        // Set the value in the Referral input field
+        if (referral) {
+            document.getElementById('referral').value = referral;
+        }
+    </script>
+@endpush

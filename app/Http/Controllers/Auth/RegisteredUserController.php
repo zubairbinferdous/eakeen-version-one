@@ -36,12 +36,18 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $value = '';
+
+        if ($request->Referral) {
+            $value = $request->Referral;
+        }
+
         $user = User::create([
             'name' => $request->name,
             'Username' => $request->Username,
             'phone' => $request->phone,
             'email' => $request->email,
-            'Referral' => $request->Referral,
+            'Referral' => $value, // Correctly handling null
             'password' => Hash::make($request->password),
         ]);
 

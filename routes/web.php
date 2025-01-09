@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/getAffiliate', [AffiliatedController::class, 'affiliateSystem'])->name('affiliate_system');
     Route::get('/getAffiliateApply', [AffiliatedController::class, 'affiliateApply'])->name('affiliateApply');
+    Route::post('/applyForAffiliate', [AffiliatedController::class, 'applyForAffiliate'])->name('applyForAffiliate');
 });
 
 // front-end-area 
