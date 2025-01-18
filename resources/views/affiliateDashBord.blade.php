@@ -162,7 +162,7 @@
                                                         @foreach ($refMember as $key => $user)
                                                             <tr>
                                                                 <td>{{ $key + 1 }}</td>
-                                                                <td><a href="#"
+                                                                <td><a href="{{ route('takeUserdata', $user->id) }}"
                                                                         class="text-primary text-decoration-none">{{ $user->name }}</a>
                                                                 </td>
 

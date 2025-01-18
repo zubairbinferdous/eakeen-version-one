@@ -90,4 +90,15 @@ class AffiliatedController extends Controller
         // Redirect back with success message
         return redirect()->back()->with('success', 'Successfully sent affiliate request.');
     }
+
+    public function takeUserdata($id)
+    {
+        $takeUserdata = User::where('id', $id)->select('Username')->first();
+        $takeUserdataByRef = User::where('Referral', $takeUserdata->Username)->get();
+        if ($takeUserdataByRef->isEmpty()) {
+            return redirect()->back()->with('warning', 'there is no data found ');
+        } else {
+            return view('affiliateDashBordList', compact('takeUserdataByRef'));
+        }
+    }
 }
