@@ -31,25 +31,23 @@
                                                 User Name
                                             </th>
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
-                                                payment_type
+                                                paymentAmount
+                                            </th>
+                                            <th class="px-6 py-3 text-left font-medium text-zinc-50">
+                                                NidNumber
                                             </th>
 
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
-                                                packages_id
-                                            </th>
-
-                                            <th class="px-6 py-3 text-left font-medium text-zinc-50">
-                                                payment_number
+                                                PaymentType
                                             </th>
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
-                                                transaction_number
+                                                PaymentNumber
                                             </th>
-
+                                            <th class="px-6 py-3 text-left font-medium text-zinc-50">
+                                                TransationNumber
+                                            </th>
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
                                                 status
-                                            </th>
-                                            <th class="px-6 py-3 text-left font-medium text-zinc-50">
-                                                packages_amount
                                             </th>
 
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
@@ -80,34 +78,41 @@
 
                                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                     <div class="text-sm leading-5 text-gray-900">
-                                                        {{ $item->payment_type }}
+                                                        {{ $item->paymentAmount }}
                                                     </div>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                     <div class="text-sm leading-5 text-gray-900">
-                                                        {{ $item->packages_id }}
+                                                        {{ $item->NidNumber }}
                                                     </div>
                                                 </td>
 
-                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                    <span
-                                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                        {{ Str::limit($item->payment_number) }}
-                                                    </span>
-                                                </td>
-
 
 
                                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                     <span
                                                         class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                        {{ Str::limit($item->transaction_number) }}
+                                                        {{ Str::limit($item->PaymentType) }}
                                                     </span>
                                                 </td>
 
 
                                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
 
+                                                    <span
+                                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                        {{ Str::limit($item->PaymentNumber) }}
+                                                    </span>
+                                                </td>
+
+
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                    <span
+                                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                        {{ Str::limit($item->TransationNumber) }}
+                                                    </span>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                     <span
                                                         class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                                         {{ Str::limit($item->status) }}
@@ -115,12 +120,6 @@
                                                 </td>
 
 
-                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                    <span
-                                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                        {{ Str::limit($item->packages_amount) }}
-                                                    </span>
-                                                </td>
 
                                                 <td
                                                     class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
@@ -139,11 +138,18 @@
 
                                                         <div class="hs-dropdown-menu ti-dropdown-menu hidden"
                                                             aria-labelledby="hs-dropdown-custom-trigger" style="">
-                                                            <a class="ti-dropdown-item" href="javascript:void(0);">
-                                                                Edit
+                                                            {{-- <a class="ti-dropdown-item" href="javascript:void(0);">
+                                                                View
+                                                            </a> --}}
+
+                                                            <a class="ti-dropdown-item"
+                                                                href="{{ route('confirmAffiliate', $item->id) }}">
+                                                                confirm
                                                             </a>
-                                                            <a class="ti-dropdown-item" href="javascript:void(0);">
-                                                                Delete
+                                                            <a class="ti-dropdown-item"
+                                                                href="{{ route('cancelAffiliate', $item->id) }}">
+
+                                                                cancel as affiliate
                                                             </a>
 
                                                         </div>

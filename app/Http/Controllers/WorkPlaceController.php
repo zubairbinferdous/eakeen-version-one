@@ -58,6 +58,22 @@ class WorkPlaceController extends Controller
         }
     }
 
+    public function confirmWorkPlace($id)
+    {
+        $data = workPlaceListUser::find($id);
+        $data->status = 'confirm';
+        $data->save();
+        return redirect()->back()->with('success', 'Work Place request confirmed successfully');
+    }
+
+    public function cancelWorkPlace($id)
+    {
+        $data = workPlaceListUser::find($id);
+        $data->status = 'cancel';
+        $data->save();
+        return redirect()->back()->with('success', 'Work Place request canceled successfully');
+    }
+
     public function WorkPlaceApply(Request $request)
     {
         $data = workPlace::find($request->id);

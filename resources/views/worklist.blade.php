@@ -54,34 +54,7 @@
         <div class="row g-4">
             <!-- Sidebar -->
             <div class="col-lg-3 mtb100">
-                <div class="profile-card ">
-                    <div class="text-center mb-4">
-                        <img src="https://via.placeholder.com/100" class="rounded-circle mb-3" alt="User Avatar">
-                        <h5>{{ auth()->user()->name }}</h5>
-                        <p class="text-muted">{{ auth()->user()->email }}</p>
-                        <p class="text-muted">{{ auth()->user()->phone }}</p>
-                    </div>
-                    <hr>
-                    <nav>
-                        <a href="{{ route('dashboard') }}" class="sidebar-option active-option">
-                            <i class="bi bi-grid"></i> Dashboard
-                        </a>
-                        <a href="" class="sidebar-option">
-                            <i class="bi bi-people"></i> Affiliate
-                        </a>
-                        <a href="{{ route('UserOrder') }}" class="sidebar-option">
-                            <i class="bi bi-bag-check"></i> My Order
-                        </a>
-
-
-                    </nav>
-                    <form action="{{ route('logout') }}" method="POST" class="ml100">
-                        @csrf
-                        <div class="d-flex justify-center align-item-center mt10">
-                            <button class="btn-success btn-sm btn ">Logout</button>
-                        </div>
-                    </form>
-                </div>
+                @include('userProfile')
             </div>
 
             <!-- Statistics and Details -->
@@ -160,19 +133,7 @@
 
 
                     <div class="col-xl-3 col-lg-4">
-                        <div class="checkout-sidebar">
-                            <div class="bg-color-three rounded-8 p-24 text-center">
-                                <span class="text-gray-900 text-xl fw-semibold">Your Coin</span>
-                            </div>
-                            <div class="border border-gray-100 rounded-8 px-24 py-40 mt-24">
-                                <div class="mb-32 pb-32 border-bottom border-gray-100 flex-between gap-8">
-                                    <span class="text-gray-900 fw-medium text-xl font-heading-two">Coin:</span>
-                                    <span class="text-gray-900 fw-medium text-xl font-heading-two">
-                                        {{ auth()->user()->coin }}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
+                        @include('userCoin')
                     </div>
                 </div>
             </div>

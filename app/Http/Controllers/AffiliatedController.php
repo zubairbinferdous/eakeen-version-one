@@ -120,4 +120,20 @@ class AffiliatedController extends Controller
         $data = affiliateList::all();
         return view('admin.affiliate.allAffiliateUser', compact('data'));
     }
+
+    public function confirmAffiliate($id)
+    {
+        $data = affiliateList::find($id);
+        $data->status = 'confirm';
+        $data->save();
+        return redirect()->back()->with('success', 'Affiliate request confirmed successfully');
+    }
+
+    public function cancelAffiliate($id)
+    {
+        $data = affiliateList::find($id);
+        $data->status = 'cancel';
+        $data->save();
+        return redirect()->back()->with('success', 'Affiliate request canceled successfully');
+    }
 }

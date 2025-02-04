@@ -98,14 +98,9 @@ class posController extends Controller
 
 
 
-    public function confirm()
-    {
-        $data = Order::where('payment_type', 'pos')->get();
-        return view('admin.pending', compact('data'));
-    }
-    public function pending()
-    {
-        $data = Order::where('payment_type', 'online')->get();
-        return view('admin.pending', compact('data'));
-    }
+
 }
+
+
+
+// 

@@ -678,12 +678,15 @@
                                 <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
                             </a>
                             <ul class="slide-menu child1">
-                                <li class="slide"><a href="{{ route('pending') }}" class="side-menu__item">Pending
+                                <li class="slide"><a href="{{ route('pendingOnline') }}"
+                                        class="side-menu__item">Pending
                                         Order</a>
                                 </li>
-                                <li class="slide"><a href="{{ route('confirm') }}" class="side-menu__item">Confirm
+                                <li class="slide"><a href="{{ route('confirmOnline') }}"
+                                        class="side-menu__item">Confirm
                                         Order</a>
                                 </li>
+
                             </ul>
                         </li>
 

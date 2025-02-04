@@ -138,11 +138,13 @@
 
                                                         <div class="hs-dropdown-menu ti-dropdown-menu hidden"
                                                             aria-labelledby="hs-dropdown-custom-trigger" style="">
-                                                            <a class="ti-dropdown-item" href="javascript:void(0);">
-                                                                Edit
+                                                            <a class="ti-dropdown-item"
+                                                                href="{{ route('confirmWorkPlace', $item->id) }}">
+                                                                confirm
                                                             </a>
-                                                            <a class="ti-dropdown-item" href="javascript:void(0);">
-                                                                Delete
+                                                            <a class="ti-dropdown-item"
+                                                                href="{{ route('cancelWorkPlace', $item->id) }}">
+                                                                cancel work place
                                                             </a>
 
                                                         </div>

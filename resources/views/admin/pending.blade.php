@@ -11,7 +11,7 @@
 
                             <div class="box">
                                 <div class="box-header">
-                                    <h5 class="box-title">Search Pending Order</h5>
+                                    <h5 class="box-title">online pending order</h5>
                                 </div>
                                 <div class="box-body">
                                     <form class="sm:grid grid-cols-12 gap-x-6 space-y-4 lg:space-y-0">
@@ -69,20 +69,23 @@
                                             </th>
 
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
-                                                Date
+                                                number
                                             </th>
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
-                                                Discount
+                                                payment method
                                             </th>
 
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
-                                                Receivable
+                                                date
                                             </th>
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
                                                 Paid
                                             </th>
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
-                                                Product Returned
+                                                Order Type
+                                            </th>
+                                            <th class="px-6 py-3 text-left font-medium text-zinc-50">
+                                                status
                                             </th>
 
 
@@ -99,7 +102,7 @@
 
                                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                     <div class="text-sm leading-5 text-gray-900">
-                                                        {{ $key++ }}
+                                                        {{ $key + 1 }}
                                                     </div>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
@@ -139,9 +142,17 @@
                                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                     <span
                                                         class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                        {{ $item->payment_type }}
+                                                    </span>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+
+                                                    <span
+                                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                                         {{ $item->status }}
                                                     </span>
                                                 </td>
+
 
 
                                                 <td
@@ -161,11 +172,17 @@
 
                                                         <div class="hs-dropdown-menu ti-dropdown-menu hidden"
                                                             aria-labelledby="hs-dropdown-custom-trigger" style="">
-                                                            <a class="ti-dropdown-item" href="/confirm">
+                                                            <a class="ti-dropdown-item"
+                                                                href="{{ route('viewOnlineOrder', $item->id) }}">
+                                                                view
+                                                            </a>
+                                                            <a class="ti-dropdown-item"
+                                                                href="{{ route('confirmOnlineOrder', $item->id) }}">
                                                                 confirm
                                                             </a>
-                                                            <a class="ti-dropdown-item" href="/delete">
-                                                                Delete
+                                                            <a class="ti-dropdown-item"
+                                                                href="{{ route('cancelOnlineOrder', $item->id) }}">
+                                                                cancel
                                                             </a>
 
 

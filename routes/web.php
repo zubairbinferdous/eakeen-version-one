@@ -5,6 +5,7 @@ use App\Http\Controllers\BankController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\OnlineOrderController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\posController;
 use App\Http\Controllers\ProductController;
@@ -38,7 +39,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/UserOrder', function () {
     $userid = Auth::user()->id;
-    $data = Order::where('payment_type', 'online')->where('id', $userid)->get();
+    $data = Order::where('payment_type', 'online')->where('user_id', $userid)->get();
     return view('UserOrder', compact('data'));
 })->middleware(['auth', 'verified'])->name('UserOrder');
 
@@ -134,15 +135,15 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 
 
-    Route::get('/return', [posController::class, 'return'])->name('return');
-    Route::get('/addPurchases', [posController::class, 'addPurchases'])->name('addPurchases');
-    Route::get('/addPurchasesData', [posController::class, 'addPurchasesData'])->name('addPurchasesData');
-    Route::get('/addDamages', [posController::class, 'addDamages'])->name('addDamages');
-    Route::get('/addDamagesData', [posController::class, 'addDamagesData'])->name('addDamagesData');
 
 
-    Route::get('/confirm', [posController::class, 'confirm'])->name('confirm');
-    Route::get('/pending', [posController::class, 'pending'])->name('pending');
+    // online order 
+    Route::get('/confirmOnlineOrder', [OnlineOrderController::class, 'confirm'])->name('confirmOnline');
+    Route::get('/pendingOnlineOrder', [OnlineOrderController::class, 'pending'])->name('pendingOnline');
+    Route::get('/viewOnlineOrder/{id}', [OnlineOrderController::class, 'viewOnlineOrder'])->name('viewOnlineOrder');
+    Route::get('/confirmOnlineOrder/{id}', [OnlineOrderController::class, 'confirmOnlineOrder'])->name('confirmOnlineOrder');
+    Route::get('/pendingOnlineOrder/{id}', [OnlineOrderController::class, 'pendingOnlineOrder'])->name('pendingOnlineOrder');
+    Route::get('/cancelOnlineOrder/{id}', [OnlineOrderController::class, 'cancelOnlineOrder'])->name('cancelOnlineOrder');
 
 
     // affiliated 
@@ -150,15 +151,22 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/packages/store', [AffiliatedController::class, 'packagesStore'])->name('packages.store');
     Route::get('/all-affiliate', [AffiliatedController::class, 'allAffiliate'])->name('allAffiliate');
     Route::get('/all-affiliate-data', [AffiliatedController::class, 'allAffiliateData'])->name('allAffiliateData');
+    Route::get('/confirm-affiliate/{id}', [AffiliatedController::class, 'confirmAffiliate'])->name('confirmAffiliate');
+    Route::get('/cancel-affiliate/{id}', [AffiliatedController::class, 'cancelAffiliate'])->name('cancelAffiliate');
     // work-place
     Route::get('/work-place', [WorkPlaceController::class, 'workPlace'])->name('workPlaceAdd');
     Route::post('/work-place-add-data', [WorkPlaceController::class, 'workPlaceAddData'])->name('workPlaceAddData');
-    // Route::get('/work-place-delete/{id}', [WorkPlaceController::class, 'workPlaceDelete'])->name('workPlaceDelete');
-    // Route::get('/work-place-edit/{id}', [WorkPlaceController::class, 'workPlaceEdit'])->name('workPlaceEdit');
-    // Route::post('/work-place-update/{id}', [WorkPlaceController::class, 'workPlaceUpdate'])->name('workPlaceUpdate');
-    // Route::get('/work-place-add', [WorkPlaceController::class, 'workPlaceAdd'])->name('workPlaceAdd');
     Route::get('/all-work-place', [WorkPlaceController::class, 'allWorkPlace'])->name('allWorkPlace');
     Route::get('/all-work-place-data', [WorkPlaceController::class, 'allWorkPlaceData'])->name('allWorkPlaceData');
+    Route::get('/confirm-work-place/{id}', [WorkPlaceController::class, 'confirmWorkPlace'])->name('confirmWorkPlace');
+    Route::get('/cancel-work-place/{id}', [WorkPlaceController::class, 'cancelWorkPlace'])->name('cancelWorkPlace');
+
+    // not working now
+    Route::get('/return', [posController::class, 'return'])->name('return');
+    Route::get('/addPurchases', [posController::class, 'addPurchases'])->name('addPurchases');
+    Route::get('/addPurchasesData', [posController::class, 'addPurchasesData'])->name('addPurchasesData');
+    Route::get('/addDamages', [posController::class, 'addDamages'])->name('addDamages');
+    Route::get('/addDamagesData', [posController::class, 'addDamagesData'])->name('addDamagesData');
 });
 
 
