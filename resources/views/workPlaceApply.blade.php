@@ -43,10 +43,6 @@
         .ml100 {
             margin-left: 20px;
         }
-
-        .card-body h5 {
-            font-size: 18px;
-        }
     </style>
 
 
@@ -66,13 +62,12 @@
                         <a href="{{ route('dashboard') }}" class="sidebar-option active-option">
                             <i class="bi bi-grid"></i> Dashboard
                         </a>
-                        <a href="" class="sidebar-option">
+                        <a href="{{ route('affiliate_system') }}" class="sidebar-option">
                             <i class="bi bi-people"></i> Affiliate
                         </a>
                         <a href="{{ route('UserOrder') }}" class="sidebar-option">
                             <i class="bi bi-bag-check"></i> My Order
                         </a>
-
 
                     </nav>
                     <form action="{{ route('logout') }}" method="POST" class="ml100">
@@ -87,65 +82,64 @@
             <!-- Statistics and Details -->
             <div class="col-lg-9 mtb100">
                 <div class="row profile-card">
-
                     <div class="col-xl-9 col-lg-8">
 
-                        <div class="row gy-3">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
-                            <div class="container mt-5">
-                                <!-- Affiliate Link Section -->
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <h5 class="">My Affiliate Link</h5>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control"
-                                                value="http://127.0.0.1:8000/register?Referral={{ Auth()->user()->Username }}"
-                                                readonly>
-                                            {{-- <button class="btn btn-warning text-white" onclick="copyToClipboard()">COPY
-                                                    CODE</button> --}}
-                                        </div>
+                        <form action="{{ route('applyForWorkPlace') }}" method="POST">
+                            @csrf
+                            <div class="row gy-3 mt-5">
+                                <!-- Blood Group -->
+                                <div class="row mb-3">
+
+                                    <!-- Payment Type -->
+                                    <div class="col-md-6">
+                                        <label for="paymentType" class="form-label">Payment Type<span
+                                                class="text-danger">*</span></label>
+                                        <select id="paymentType" class="form-select" required name="PaymentType">
+                                            <option selected disabled>-- Select a Payment Type --</option>
+                                            <option value="Bkash">Bkash</option>
+                                            <option value="Rocket">Rocket</option>
+                                            <option value="Nagad">Nagad</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="thana" class="form-label">Payment Number<span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" id="thana" class="form-control"
+                                            placeholder="Payment Number" required name="PaymentNumber">
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="thana" class="form-label">Transaction Number<span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" id="thana" class="form-control"
+                                            placeholder="Transaction Number" required name="transationNumber">
                                     </div>
                                 </div>
-
-                                <!-- Referral List Section -->
-                                <div class="card shadow-sm">
-                                    <div class="card-body">
-                                        <h5 class="card-title mb-4">Refer List</h5>
-
-                                        <div class="table-responsive">
-                                            <table class="table table-striped table-hover align-middle">
-                                                <thead class="table-primary">
-                                                    <tr>
-                                                        <th scope="col">SL</th>
-                                                        <th scope="col">Name</th>
-                                                        <th scope="col">Phone</th>
-
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-
-                                                    @foreach ($takeUserdataByRef as $key => $user)
-                                                        <tr>
-                                                            <td>{{ $key + 1 }}</td>
-                                                            <td><a href="{{ route('takeUserdata', $user->id) }}"
-                                                                    class="text-primary text-decoration-none">{{ $user->name }}</a>
-                                                            </td>
-                                                            <td>{{ $user->phone }}</td>
-                                                        </tr>
-                                                    @endforeach
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
 
+                            <input type="hidden" value="{{ $data->packages_amount }}" name="packagesAmount">
+                            <input type="hidden" value="{{ $data->id }}" name="packages_id">
+                            <input type="hidden" value="{{ Auth()->user()->id }}" name="user_id">
+                            {{-- @dd($data) --}}
 
-                        </div>
+
+                            <button type="submit" class="btn btn-main mt-40 py-18 w-100 rounded-8 mt-56"> Apply for
+                                working place
+                            </button>
 
 
+                        </form>
                     </div>
 
                     <div class="col-xl-3 col-lg-4">
@@ -170,14 +164,3 @@
         </div>
     </div>
 @endsection
-
-@push('script')
-    <script>
-        function copyToClipboard() {
-            const input = document.querySelector('.form-control');
-            input.select();
-            navigator.clipboard.writeText(input.value);
-            alert('Affiliate link copied!');
-        }
-    </script>
-@endpush

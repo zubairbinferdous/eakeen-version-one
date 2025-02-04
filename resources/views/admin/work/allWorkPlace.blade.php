@@ -11,10 +11,11 @@
 
                             <div class="box">
                                 <div class="box-header">
-                                    <h5 class="box-title">Search Pending Order</h5>
+                                    <h5 class="box-title">All Work Place Packages</h5>
                                 </div>
-                                <div class="box-body">
+                                {{-- <div class="box-body">
                                     <form class="sm:grid grid-cols-12 gap-x-6 space-y-4 lg:space-y-0">
+
                                         <div
                                             class="col-span-12 lg:col-span-3 sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full rtl:space-x-reverse">
                                             <!-- <label class="w-32 ti-form-label mb-0"></label> -->
@@ -48,7 +49,7 @@
                                             </button>
                                         </div>
                                     </form>
-                                </div>
+                                </div> --}}
                             </div>
                             <div
                                 class="align-middle inline-block w-full shadow overflow-x-auto sm:rounded-lg border-b border-gray-200">
@@ -62,33 +63,43 @@
                                                 #
                                             </th>
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
-                                                Invoice No.
+                                                Packages Name
                                             </th>
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
-                                                Customer name
+                                                Packages Amount
+
                                             </th>
 
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
-                                                Date
+                                                Payment Type
                                             </th>
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
-                                                Discount
-                                            </th>
-
-                                            <th class="px-6 py-3 text-left font-medium text-zinc-50">
-                                                Receivable
-                                            </th>
-                                            <th class="px-6 py-3 text-left font-medium text-zinc-50">
-                                                Paid
-                                            </th>
-                                            <th class="px-6 py-3 text-left font-medium text-zinc-50">
-                                                Product Returned
+                                                Number
                                             </th>
 
 
                                             <th class="px-6 py-3 text-left font-medium text-zinc-50">
-                                                action
+                                                Status
                                             </th>
+                                            <th class="px-6 py-3 text-left font-medium text-zinc-50">
+                                                Task One
+                                            </th>
+                                            <th class="px-6 py-3 text-left font-medium text-zinc-50">
+                                                Task Two
+                                            </th>
+                                            <th class="px-6 py-3 text-left font-medium text-zinc-50">
+                                                Task Three
+                                            </th>
+                                            <th class="px-6 py-3 text-left font-medium text-zinc-50">
+                                                Task Four
+                                            </th>
+                                            <th class="px-6 py-3 text-left font-medium text-zinc-50">
+                                                Task Five
+                                            </th>
+                                            <th class="px-6 py-3 text-left font-medium text-zinc-50">
+                                                Action
+                                            </th>
+
                                         </tr>
                                     </thead>
                                     <!-- HEAD end -->
@@ -99,47 +110,74 @@
 
                                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                     <div class="text-sm leading-5 text-gray-900">
-                                                        {{ $key++ }}
+                                                        {{ $key + 1 }}
                                                     </div>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                     <div class="text-sm leading-5 text-gray-900">
-                                                        {{ $item->order_number }}
+                                                        {{ $item->packages_name }}
                                                     </div>
                                                 </td>
 
                                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                     <div class="text-sm leading-5 text-gray-900">
-                                                        {{ $item->name }}
+                                                        {{ $item->packages_amount }}
                                                     </div>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                     <div class="text-sm leading-5 text-gray-900">
-                                                        {{ $item->phone }}
+                                                        {{ $item->payment_type }}
                                                     </div>
                                                 </td>
+
                                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                     <span
                                                         class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                        {{ $item->payment_method }}
+                                                        {{ $item->number }}
                                                     </span>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                    <span
-                                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                        03 sep 2024
-                                                    </span>
-                                                </td>
-                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                    <span
-                                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                        {{ $item->sub_total }}
-                                                    </span>
-                                                </td>
-                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+
                                                     <span
                                                         class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                                         {{ $item->status }}
+                                                    </span>
+                                                </td>
+
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                    <span
+                                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                        {{ Str::limit($item->task_one, 5, '...') }}
+                                                    </span>
+                                                </td>
+
+
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                    <span
+                                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                        {{ Str::limit($item->task_two, 5, '...') }}
+                                                    </span>
+                                                </td>
+
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+
+                                                    <span
+                                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                        {{ Str::limit($item->task_three, 5, '...') }}
+                                                    </span>
+                                                </td>
+
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                    <span
+                                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                        {{ Str::limit($item->task_four, 5, '...') }}
+                                                    </span>
+                                                </td>
+
+                                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                    <span
+                                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                        {{ Str::limit($item->task_five, 5, '...') }}
                                                     </span>
                                                 </td>
 
@@ -161,13 +199,12 @@
 
                                                         <div class="hs-dropdown-menu ti-dropdown-menu hidden"
                                                             aria-labelledby="hs-dropdown-custom-trigger" style="">
-                                                            <a class="ti-dropdown-item" href="/confirm">
-                                                                confirm
+                                                            <a class="ti-dropdown-item" href="javascript:void(0);">
+                                                                Edit
                                                             </a>
-                                                            <a class="ti-dropdown-item" href="/delete">
+                                                            <a class="ti-dropdown-item" href="javascript:void(0);">
                                                                 Delete
                                                             </a>
-
 
                                                         </div>
                                                     </div>

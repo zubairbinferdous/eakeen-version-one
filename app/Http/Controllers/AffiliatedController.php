@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Affiliated;
 use App\Models\affiliateList;
 use App\Models\User;
+use Illuminate\Contracts\Support\ValidatedData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -46,15 +47,19 @@ class AffiliatedController extends Controller
     public function affiliateApply(Request $request)
     {
         $Packages_amount = $request->Packages_amount;
-        return view('dashBoardApply', compact("Packages_amount"));
+        $package_id = $request->package_id;
+        // dd($request->all());
+        return view('dashBoardApply', compact("Packages_amount", "package_id"));
     }
 
     public function applyForAffiliate(Request $request)
     {
+        // dd($request->all());
         // Validate the incoming request data
         $validatedData = $request->validate([
             'user_id' => 'required|exists:users,id', // Ensure user_id exists in the users table
             'packagesAmount' => 'required|numeric', // Must be a number
+            'package_id' => 'required', // Must be a number
             'Group' => 'required|in:A+,A-,B+,B-,O+,O-,AB+,AB-', // Restrict to valid blood groups
             'Birth' => 'required|date|', // Must be a valid date before today
             'Gender' => 'required|in:male,female', // Only allow 'male' or 'female'
@@ -72,6 +77,7 @@ class AffiliatedController extends Controller
         // Create the affiliate record
         affiliateList::create([
             'user_id' => $validatedData['user_id'],
+            'package_id' => $validatedData['package_id'],
             'paymentAmount' => $validatedData['packagesAmount'],
             'Group' => $validatedData['Group'],
             'Birth' => $validatedData['Birth'],
@@ -95,10 +101,23 @@ class AffiliatedController extends Controller
     {
         $takeUserdata = User::where('id', $id)->select('Username')->first();
         $takeUserdataByRef = User::where('Referral', $takeUserdata->Username)->get();
+
         if ($takeUserdataByRef->isEmpty()) {
             return redirect()->back()->with('warning', 'there is no data found ');
         } else {
             return view('affiliateDashBordList', compact('takeUserdataByRef'));
         }
+    }
+
+    public function allAffiliate()
+    {
+        $data = Affiliated::all();
+        return view('admin.affiliate.allPackages', compact('data'));
+    }
+
+    public function allAffiliateData()
+    {
+        $data = affiliateList::all();
+        return view('admin.affiliate.allAffiliateUser', compact('data'));
     }
 }

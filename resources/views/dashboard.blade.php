@@ -111,6 +111,9 @@
                         <a href="{{ route('UserOrder') }}" class="sidebar-option">
                             <i class="bi bi-bag-check"></i> My Order
                         </a>
+                        <a href="{{ route('workPlaceList') }}" class="sidebar-option">
+                            <i class="bi bi-bag-check"></i> Work Place
+                        </a>
 
                     </nav>
                     <form action="{{ route('logout') }}" method="POST" class="ml100">

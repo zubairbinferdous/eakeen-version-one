@@ -102,6 +102,8 @@
                                             @foreach ($data as $item)
                                                 <input type="hidden" name="Packages_amount"
                                                     value="{{ $item->Packages_amount }}">
+                                                <input type="hidden" name="package_id" value="{{ $item->id }}">
+
                                                 <div class="card mb-3">
                                                     <div class="card-header">
                                                         <span>{{ $item->Packages_name }}</span>
@@ -128,7 +130,7 @@
                                 </form>
                             @else
                                 <div class="container mt-5">
-                                    <!-- Affiliate Link Section -->
+                                    <!-- Affiliate Link Section -->      
                                     <div class="card mb-4">
                                         <div class="card-body">
                                             <h5 class="">My Affiliate Link</h5>

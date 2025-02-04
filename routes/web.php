@@ -10,6 +10,7 @@ use App\Http\Controllers\posController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\WorkPlaceController;
 use App\Models\Affiliated;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
@@ -46,35 +47,30 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-
     // affiliate system
 
     Route::get('/getAffiliate', [AffiliatedController::class, 'affiliateSystem'])->name('affiliate_system');
     Route::get('/getAffiliateApply', [AffiliatedController::class, 'affiliateApply'])->name('affiliateApply');
     Route::post('/applyForAffiliate', [AffiliatedController::class, 'applyForAffiliate'])->name('applyForAffiliate');
     Route::get('/takeUserdata/{id}', [AffiliatedController::class, 'takeUserdata'])->name('takeUserdata');
+
+    // work place
+    Route::get('/workPlaceList', [WorkPlaceController::class, 'workPlaceList'])->name('workPlaceList');
+    Route::get('/WorkPlaceApply', [WorkPlaceController::class, 'WorkPlaceApply'])->name('WorkPlaceApply');
+    Route::post('/applyForWorkPlace', [WorkPlaceController::class, 'applyForWorkPlace'])->name('applyForWorkPlace');
 });
 
-
-
 // front-end-area 
-
 Route::get('/', [FrontendController::class, 'homePage'])->name('home');
 Route::get('/shop', [FrontendController::class, 'shop'])->name('shop');
 Route::get('/productPage/{id}', [FrontendController::class, 'productPage'])->name('product.page');
-
-
-
 //check out page 
 Route::get('/checkout', [FrontendController::class, 'checkout'])->name('checkout');
-
-
 // add to cart 
 Route::post('/add-to-cart', [FrontendController::class, 'addToCart'])->name('addToCart');
 Route::post('/add-to-cartOne', [FrontendController::class, 'addToCartOne'])->name('addToCartOne');
 Route::get('/cartPage', [FrontendController::class, 'cartPage'])->name('cartPage');
 Route::get('/removeItem/{id}', [FrontendController::class, 'removeItem'])->name('removeItem');
-
 Route::Post('/cart/increment', [FrontendController::class, 'increment'])->name('increment');
 Route::Post('/checkOutNow', [FrontendController::class, 'checkOutNow'])->name('checkOutNow');
 
@@ -152,6 +148,17 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     // affiliated 
     Route::get('/affiliate', [AffiliatedController::class, 'affiliate'])->name('affiliate');
     Route::post('/packages/store', [AffiliatedController::class, 'packagesStore'])->name('packages.store');
+    Route::get('/all-affiliate', [AffiliatedController::class, 'allAffiliate'])->name('allAffiliate');
+    Route::get('/all-affiliate-data', [AffiliatedController::class, 'allAffiliateData'])->name('allAffiliateData');
+    // work-place
+    Route::get('/work-place', [WorkPlaceController::class, 'workPlace'])->name('workPlaceAdd');
+    Route::post('/work-place-add-data', [WorkPlaceController::class, 'workPlaceAddData'])->name('workPlaceAddData');
+    // Route::get('/work-place-delete/{id}', [WorkPlaceController::class, 'workPlaceDelete'])->name('workPlaceDelete');
+    // Route::get('/work-place-edit/{id}', [WorkPlaceController::class, 'workPlaceEdit'])->name('workPlaceEdit');
+    // Route::post('/work-place-update/{id}', [WorkPlaceController::class, 'workPlaceUpdate'])->name('workPlaceUpdate');
+    // Route::get('/work-place-add', [WorkPlaceController::class, 'workPlaceAdd'])->name('workPlaceAdd');
+    Route::get('/all-work-place', [WorkPlaceController::class, 'allWorkPlace'])->name('allWorkPlace');
+    Route::get('/all-work-place-data', [WorkPlaceController::class, 'allWorkPlaceData'])->name('allWorkPlaceData');
 });
 
 

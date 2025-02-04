@@ -275,6 +275,7 @@
                             </div>
 
                             <input type="hidden" value="{{ $Packages_amount }}" name="packagesAmount">
+                            <input type="hidden" value="{{ $package_id }}" name="package_id">
                             <input type="hidden" value="{{ Auth()->user()->id }}" name="user_id">
 
 

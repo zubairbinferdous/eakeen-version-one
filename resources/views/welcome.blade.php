@@ -698,13 +698,40 @@
                                 <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
                             </a>
                             <ul class="slide-menu child1">
-                                <li class="slide"><a href="{{ route('affiliate') }}"
-                                        class="side-menu__item">Affiliated
+                                <li class="slide"><a href="{{ route('affiliate') }}" class="side-menu__item"> ADD
+                                        Affiliated
                                         packages </a>
                                 </li>
-                                <li class="slide"><a href="{{ route('confirm') }}"
-                                        class="side-menu__item">Affiliated Confirm
+                                <li class="slide"><a href="{{ route('allAffiliate') }}"
+                                        class="side-menu__item">Affiliated packages
                                         Data</a>
+                                </li>
+                                <li class="slide"><a href="{{ route('allAffiliateData') }}"
+                                        class="side-menu__item">Affiliated User Application</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="slide__category"><span class="category-name">Work Place</span></li>
+
+
+                        <li class="slide  has-sub">
+                            <a href="javascript:void(0)" class="side-menu__item">
+                                <i class="ri-home-8-line side-menu__icon"></i>
+                                <span class="side-menu__label">Work Place </span>
+                                <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
+                            </a>
+                            <ul class="slide-menu child1">
+                                <li class="slide"><a href="{{ route('workPlaceAdd') }}" class="side-menu__item">
+                                        Add Work Place
+                                    </a>
+                                </li>
+                                <li class="slide"><a href="{{ route('allWorkPlace') }}" class="side-menu__item">All
+                                        Work Place Data </a>
+                                </li>
+                                <li class="slide"><a href="{{ route('allWorkPlaceData') }}"
+                                        class="side-menu__item">
+                                        Work Place User Data </a>
                                 </li>
                             </ul>
                         </li>
