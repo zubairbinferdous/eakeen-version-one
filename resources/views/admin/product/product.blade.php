@@ -4,13 +4,19 @@
 
         <div class="main-content">
             <!-- Page Header -->
-            <div class="block justify-between page-header md:flex">
-                <div>
-                    <h3 class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-white text-2xl font-medium">
-                        Add Product</h3>
-                </div>
+
+
+            <div class="box-header sm:flex sm:justify-between space-y-3 sm:space-y-0">
+                <h5 class="box-title my-auto">Add New Product</h5>
+                <a href="{{ route('category') }}" class="ti-btn ti-btn-primary mr-2 py-1"><i class="ri ri-add-line"></i>Add
+                    Category</a>
+                <a href="{{ route('subCategory') }}" class="ti-btn ti-btn-primary  py-1"><i class="ri ri-add-line"></i>Add
+                    Sub
+                    Category</a>
 
             </div>
+
+
             <!-- Page Header Close -->
 
             <!-- Start::row-1 -->
@@ -179,9 +185,9 @@
                                                     </div>
                                                     <div class="col-span-12 lg:col-span-4">
                                                         <div class="space-y-2">
-                                                            <label class="ti-form-label mb-0">Coin</label>
+                                                            <label class="ti-form-label mb-0">Point</label>
                                                             <input type="text" class="my-auto ti-form-input"
-                                                                placeholder="Coin" name="coin" required>
+                                                                placeholder="Point" name="coin" required>
                                                         </div>
                                                     </div>
 
@@ -236,25 +242,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-span-12 lg:col-span-6">
-                                                    <div class="box">
 
-                                                        <div class="box-body">
-                                                            <div class="hs-tooltip flex items-center">
-                                                                <input type="checkbox" id="hs-tooltip-example"
-                                                                    class="hs-tooltip-toggle ti-switch shrink-0"
-                                                                    name="Featured" value="1">
-                                                                <label for="hs-tooltip-example"
-                                                                    class="text-sm text-gray-500 ltr:ml-3 rtl:mr-3 dark:text-white/70">Featured</label>
-                                                                <div class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded-sm shadow-sm dark:bg-slate-700 hidden"
-                                                                    role="tooltip" data-popper-placement="top"
-                                                                    style="position: fixed; inset: auto auto 0px 0px; margin: 0px; transform: translate(1151px, -408px);">
-                                                                    Enable push notifications
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                 <div class="col-span-12 lg:col-span-6">
                                                     <div class="box">
 
@@ -267,6 +255,48 @@
                                                                 <label for="hs-tooltip-example"
                                                                     class="text-sm text-gray-500 ltr:ml-3 rtl:mr-3 dark:text-white/70">Today
                                                                     Deal</label>
+                                                                <div class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded-sm shadow-sm dark:bg-slate-700 hidden"
+                                                                    role="tooltip" data-popper-placement="top"
+                                                                    style="position: fixed; inset: auto auto 0px 0px; margin: 0px; transform: translate(1151px, -408px);">
+                                                                    Enable push notifications
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-span-12 lg:col-span-6">
+                                                    <div class="box">
+
+                                                        <div class="box-body">
+                                                            <div class="hs-tooltip flex items-center">
+                                                                <input type="checkbox" id="hs-tooltip-example"
+                                                                    class="hs-tooltip-toggle ti-switch shrink-0"
+                                                                    name="weekly " value="1">
+                                                                <label for="hs-tooltip-example"
+                                                                    class="text-sm text-gray-500 ltr:ml-3 rtl:mr-3 dark:text-white/70">weekly
+                                                                </label>
+                                                                <div class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded-sm shadow-sm dark:bg-slate-700 hidden"
+                                                                    role="tooltip" data-popper-placement="top"
+                                                                    style="position: fixed; inset: auto auto 0px 0px; margin: 0px; transform: translate(1151px, -408px);">
+                                                                    Enable push notifications
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-span-12 lg:col-span-6">
+                                                    <div class="box">
+
+                                                        <div class="box-body">
+                                                            <div class="hs-tooltip flex items-center">
+                                                                <input type="checkbox" id="hs-tooltip-example"
+                                                                    class="hs-tooltip-toggle ti-switch shrink-0"
+                                                                    name="monthly " value="1">
+                                                                <label for="hs-tooltip-example"
+                                                                    class="text-sm text-gray-500 ltr:ml-3 rtl:mr-3 dark:text-white/70">monthly</label>
                                                                 <div class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded-sm shadow-sm dark:bg-slate-700 hidden"
                                                                     role="tooltip" data-popper-placement="top"
                                                                     style="position: fixed; inset: auto auto 0px 0px; margin: 0px; transform: translate(1151px, -408px);">

@@ -77,7 +77,7 @@ class WorkPlaceController extends Controller
     public function WorkPlaceApply(Request $request)
     {
         $data = workPlace::find($request->id);
-        return view('WorkPlaceApply', compact('data'));
+        return view('workPlaceApply', compact('data'));
     }
 
     public function applyForWorkPlace(Request $request)

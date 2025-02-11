@@ -34,6 +34,7 @@
                     <a href="{{ route('addProduct') }}" class="ti-btn ti-btn-primary m-0 py-2"><i
                             class="ri ri-add-line"></i>Add
                         Product</a>
+
                 </div>
                 <div class="box-body">
                     <div class="table-bordered whitespace-nowrap rounded-sm overflow-auto">
